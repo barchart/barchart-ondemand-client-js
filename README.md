@@ -12,10 +12,11 @@ onDemand.setJsonP(true);
 onDemand.getQuote({symbols: 'AAPL,GOOG'}, function (err, data) {
     if (err) {
         console.error(err);
-    }else{
-        data.forEach(function(quote) {
-            console.log("getQuote = " + index + ": " + quote.symbol + " [" + quote.name + "] = " + JSON.stringify(quote));
-        });
+    } else {
+        var quotes = data.results;
+        for (x in quotes) {
+            console.log("getQuote: " + quotes[x].symbol + " [" + quotes[x].name + "] = " + JSON.stringify(quotes[x]));
+        }
     }
 });
 ```
