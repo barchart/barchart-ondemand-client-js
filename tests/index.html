@@ -1,27 +1,338 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
+<meta charset="UTF-8">
+<title></title>
 
-    <script src="../src/ondemand-client.js"></script>
+<script src="../src/ondemand-client.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-    <script>
+<script>
 
-        var onDemand = new OnDemandClient();
+var onDemand = new OnDemandClient();
 
-        onDemand.setAPIKey('change-me');
+onDemand.setAPIKey('change-me');
+onDemand.setJsonP(true);
 
-        onDemand.getQuote({symbols: 'AAPL,GOOG'}, function (err, data) {
-            if (err) {
-                console.error(err);
-                return;
-            }
+onDemand.getQuote({symbols: 'AAPL,GOOG'}, function (err, data) {
+    if (err) {
+        console.error(err);
+        return;
+    }
 
-            console.log("Data = " + data);
+    $.each(data.results, function (index, quote) {
+        console.log("getQuote = " + index + ": " + quote.symbol + " [" + quote.name + "] = " + JSON.stringify(quote));
+    });
+
+});
+
+//
+
+if (false) {
+
+    onDemand.getUSDAGrainPrices({commodityTypes: 'C,S'}, function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        $.each(data.results, function (index, grain) {
+            console.log("getUSDAGrainPrices = " + index + ": " + grain.commodityType + " [" + grain.location + "]" + JSON.stringify(grain));
         });
 
-    </script>
+    });
+
+    onDemand.getSpecialOptions({root: 'BCD'}, function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        $.each(data.results, function (index, option) {
+            console.log("getSpecialOptions = " + index + ": " + option.root + " [" + option.symbol + "]" + JSON.stringify(option));
+        });
+
+    });
+
+    onDemand.getEquityOptions({underlying_symbols: 'AAPL'}, function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        $.each(data.results, function (index, option) {
+            console.log("getEquityOptions = " + index + ": " + option.underlying_symbol + " [" + option.symbol + "]" + JSON.stringify(option));
+        });
+
+    });
+
+    onDemand.getFuturesOptions({root: 'ES'}, function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        $.each(data.results, function (index, option) {
+            console.log("getFuturesOptions = " + index + ": " + option.root + " [" + option.contract + "]" + JSON.stringify(option));
+        });
+
+    });
+
+    onDemand.getHistory({symbol: 'AAPL', type: 'minutes', interval: '5'}, function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        $.each(data.results, function (index, bar) {
+            console.log("getHistory = " + index + ": " + bar.symbol + " [" + bar.timestamp + "]" + JSON.stringify(bar));
+        });
+
+    });
+
+    onDemand.getFuturesOptionsExpirations({symbol: 'AAPL'}, function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        $.each(data.results, function (index, contract) {
+            console.log("getFuturesOptionsExpirations = " + index + ": " + contract.symbol + " " + JSON.stringify(contract));
+        });
+
+    });
+
+    onDemand.getFuturesExpirations({roots: 'ES,GC'}, function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        $.each(data.results, function (index, contract) {
+            console.log("getFuturesExpirations = " + index + ": " + contract.symbol + " " + JSON.stringify(contract));
+        });
+
+    });
+
+    onDemand.getFuturesSpecifications({symbols: 'ES,GC'}, function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        $.each(data.results, function (index, spec) {
+            console.log("getFuturesSpecifications = " + index + ": " + spec.symbol + " " + JSON.stringify(spec));
+        });
+
+    });
+
+    onDemand.getInstrumentDefinition({symbols: 'AAPL,ESZ14'}, function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        $.each(data.results, function (index, def) {
+            console.log("getInstrumentDefinition = " + index + ": " + def.symbol + " " + JSON.stringify(def));
+        });
+
+    });
+
+    onDemand.getEarningsEstimates({symbols: 'AAPL'}, function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        $.each(data.results, function (index, estimate) {
+            console.log("getEarningsEstimates = " + index + ": " + estimate.symbol + " " + JSON.stringify(estimate));
+        });
+
+    });
+
+    onDemand.getCorporateActions({symbols: 'AAPL', eventType: 'earnings'}, function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        $.each(data.results, function (index, event) {
+            console.log("getCorporateActions = " + index + ": " + event.symbol + "[" + event.eventType + "] " + JSON.stringify(event));
+        });
+
+    });
+
+    onDemand.getIndexMembers({symbol: '$SPX'}, function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        $.each(data.results, function (index, member) {
+            console.log("getIndexMembers = " + index + ": " + member.symbol + JSON.stringify(member));
+        });
+
+    });
+
+    onDemand.getFinancialHighlights({symbols: 'AAPL'}, function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        $.each(data.results, function (index, highlight) {
+            console.log("getFinancialHighlights = " + index + ": " + highlight.symbol + JSON.stringify(highlight));
+        });
+
+    });
+
+    onDemand.getFinancialRatios({symbols: 'AAPL'}, function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        $.each(data.results, function (index, ratio) {
+            console.log("getFinancialRatios = " + index + ": " + ratio.symbol + JSON.stringify(ratio));
+        });
+
+    });
+
+    onDemand.getIncomeStatements({symbols: 'AAPL', frequency: 'Quarter'}, function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        $.each(data.results, function (index, statement) {
+            console.log("getIncomeStatements = " + index + ": " + statement.symbol + JSON.stringify(statement));
+        });
+
+    });
+
+    onDemand.getRatings({symbols: 'AAPL,GOOG', fields: 'strongBuy,hold,strongSell'}, function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        $.each(data.results, function (index, rating) {
+            console.log("getRatings = " + index + ": " + rating.symbol + JSON.stringify(rating));
+        });
+
+    });
+
+    onDemand.getSignal({symbols: 'AAPL,GOOG'}, function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        $.each(data.results, function (index, signal) {
+            //console.log("getSignal = " + index + ": " + signal.symbol + JSON.stringify(signal));
+        });
+
+    });
+
+    onDemand.getTechnicals({symbols: 'AAPL,GOOG'}, function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        $.each(data.results, function (index, quote) {
+            // console.log("getTechnicals = " + index + ": " + quote.symbol + " " + JSON.stringify(quote));
+        });
+
+    });
+
+    onDemand.getCompetitors({symbol: 'AAPL'}, function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        $.each(data.results, function (index, comp) {
+            // console.log("getCompetitors = " + index + ": " + comp.symbol + " " + JSON.stringify(comp));
+        });
+    });
+
+    onDemand.getProfile({symbols: 'AAPL,GOOG'}, function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        $.each(data.results, function (index, prof) {
+            // console.log("getProfile = " + index + ": " + prof.symbol + " " + JSON.stringify(prof));
+        });
+    });
+
+    onDemand.getHighsLows({exchanges: 'NYSE,NASDAQ', assetType: 'STK', type: 'high', period: '5d' }, function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        $.each(data.results, function (index, result) {
+            // console.log("getHighsLows: 5-Day Highs, NYSE+NASDAQ = " + index + ": " + result.symbol + " " + JSON.stringify(result));
+        });
+    });
+
+    onDemand.getMomentum({exchanges: 'NYSE,NASDAQ'}, function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        $.each(data.results, function (index, result) {
+            // console.log("getMomentum: US, NYSE, NASDAQ = " + index + ": " + result.exchange + " " + JSON.stringify(result));
+        });
+    });
+
+    onDemand.getSECFilings({symbols: 'AAPL,GOOG', filingType: '10q', maxRecords: '5'}, function (err, data) {
+        if (err) {
+            console.error(err);
+        } else {
+            $.each(data.results, function (index, filing) {
+                // console.log("getSECFilings = " + index + ": " + filing.symbol + " " + JSON.stringify(filing));
+            });
+        }
+    });
+
+    onDemand.getChart({symbols: 'AAPL', type: 'AREA', height: '350'}, function (err, data) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        $.each(data.results, function (index, chart) {
+            // console.log("getChart = " + index + ": " + chart.symbol + " " + JSON.stringify(chart));
+        });
+    });
+
+    onDemand.getNews({sources: 'AP,IF', displayType: 'preview'}, function (err, data) {
+        if (err) {
+            console.error(err);
+        } else {
+            $.each(data.results, function (index, feed) {
+                // console.log("getNews = " + index + ": " + feed.source + " " + JSON.stringify(feed));
+            });
+        }
+    });
+
+    onDemand.getWeather({weatherType: 'CC', zipCode: '60616'}, function (err, data) {
+        if (err) {
+            console.error(err);
+        } else {
+            $.each(data.results, function (index, weather) {
+                // console.log("getWeather = " + index + ": " + weather.location + " " + JSON.stringify(weather));
+            });
+        }
+    });
+
+}
+</script>
 </head>
 <body>
 

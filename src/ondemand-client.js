@@ -6,6 +6,8 @@
  *
  * Modeled after https://github.com/JMPerez/spotify-web-api-js
  *
+ * JSONP function from https://github.com/larryosborn/JSONP
+ *
  */
 
 var OnDemandClient = (function () {
@@ -15,13 +17,11 @@ var OnDemandClient = (function () {
     var _baseUrl = "http://ondemand.websol.barchart.com";
     var _apiKey = null;
     var _promiseImplementation = null;
-    var _wrapForCors = false;
+    var _useJsonP = true;
+    var _debug = false;
 
     var Constr = function () {
-        if (_wrapForCors) {
-            var baseUrl = "http://localhost/utils/data-fetcher.php?url=" + _baseUrl;
-            _baseUrl = baseUrl;
-        }
+
     };
 
     Constr.prototype = {
@@ -30,7 +30,208 @@ var OnDemandClient = (function () {
 
     Constr.prototype.getQuote = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getQuote.json'
+            url: _baseUrl + '/getQuote.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getTechnicals = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getTechnicals.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getProfile = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getProfile.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getInstrumentDefinition = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getInstrumentDefinition.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getFuturesSpecifications = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getFuturesSpecifications.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    /*
+     * FIXME: Response should have a 'root' field in addition to 'symbol'
+     * */
+    Constr.prototype.getFuturesExpirations = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getFuturesExpirations.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    /*
+     * FIXME: This is not implemented and should return an error in requested format (eg. JSON or XML) not plain text
+     * */
+    Constr.prototype.getFuturesOptionsExpirations = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getFuturesOptionsExpirations.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getCompetitors = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getCompetitors.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    /*
+     * FIXME: This is not implemented and should return an error in requested format (eg. JSON or XML) not plain text
+     * */
+    Constr.prototype.getInsiders = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getInsiders.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getHighsLows = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getHighsLows.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getMomentum = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getMomentum.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getSignal = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getSignal.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getRatings = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getRatings.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getChart = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getChart.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getHistory = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getHistory.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getFuturesOptions = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getFuturesOptions.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getEquityOptions = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getEquityOptions.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getSpecialOptions = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getSpecialOptions.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getWeather = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getWeather.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getUSDAGrainPrices = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getUSDAGrainPrices.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getEarningsEstimates = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getEarningsEstimates.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getCorporateActions = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getCorporateActions.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getIndexMembers = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getIndexMembers.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getFinancialHighlights = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getFinancialHighlights.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getIncomeStatements = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getIncomeStatements.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getFinancialRatios = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getFinancialRatios.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getSECFilings = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getSECFilings.jsonp'
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    /*
+     * FIXME: OnDemand will not return more than one source (feed)
+     * */
+    Constr.prototype.getNews = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getNews.jsonp'
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
@@ -57,58 +258,86 @@ var OnDemandClient = (function () {
     };
 
     var _doFetch = function (requestData, callback) {
-        var promiseFunction = function (resolve, reject) {
-            var req = new XMLHttpRequest();
-            var type = requestData.type || 'GET';
 
-            if (type === 'GET') {
-                req.open(type,
-                    _buildUrl(requestData.url, requestData.params),
-                    true);
-            } else {
-                req.open(type, _buildUrl(requestData.url));
-            }
+        if (_useJsonP === true) {
 
-            req.onreadystatechange = function () {
-                if (req.readyState === 4) {
-                    var data = null;
-                    try {
-                        data = req.responseText ? JSON.parse(req.responseText) : '';
-                    } catch (e) {
+            JSONP({
+                url: _buildUrl(requestData.url, requestData.params),
+                success: function (data) {
+                    if (_debug) {
+                        console.log('success!', data);
                     }
+                    if (callback) {
+                        callback(null, data);
+                    }
+                },
+                error: function (query) {
+                    console.log('fetch error!', query);
+                    if (callback) {
+                        callback(query, null);
+                    }
+                }
+            });
 
-                    if (req.status === 200 || req.status === 201) {
-                        if (resolve) {
-                            resolve(data);
+
+        } else {
+
+            var promiseFunction = function (resolve, reject) {
+                var req = new XMLHttpRequest();
+                var type = requestData.type || 'GET';
+
+                if (type === 'GET') {
+                    req.open(type,
+                        _buildUrl(requestData.url, requestData.params),
+                        true);
+                } else {
+                    req.open(type, _buildUrl(requestData.url));
+                }
+
+                req.onreadystatechange = function () {
+                    if (req.readyState === 4) {
+                        var data = null;
+                        try {
+                            data = req.responseText ? JSON.parse(req.responseText) : '';
+                        } catch (e) {
                         }
-                        if (callback) {
-                            callback(null, data);
-                        }
-                    } else {
-                        if (reject) {
-                            reject(req);
-                        }
-                        if (callback) {
-                            callback(req, null);
+
+                        if (req.status === 200 || req.status === 201) {
+                            if (resolve) {
+                                resolve(data);
+                            }
+                            if (callback) {
+                                callback(null, data);
+                            }
+                        } else {
+                            if (reject) {
+                                reject(req);
+                            }
+                            if (callback) {
+                                callback(req, null);
+                            }
                         }
                     }
+                };
+
+                if (type === 'GET') {
+                    req.send(null);
+                } else {
+                    req.send(JSON.stringify(requestData.postData));
                 }
             };
 
-            if (type === 'GET') {
-                req.send(null);
-            } else {
-                req.send(JSON.stringify(requestData.postData));
-            }
-        };
 
-        if (callback) {
-            promiseFunction();
-            return null;
-        } else {
-            return _promiseProvider(promiseFunction);
+            if (callback) {
+                promiseFunction();
+                return null;
+            } else {
+                return _promiseProvider(promiseFunction);
+            }
+
         }
     };
+
 
     var _extend = function () {
         var args = Array.prototype.slice.call(arguments);
@@ -155,14 +384,18 @@ var OnDemandClient = (function () {
         return null;
     };
 
-    /**
-     * Sets the API key to be used.
 
-     * @param {String} apiKey The API key
-     */
     Constr.prototype.setAPIKey = function (apiKey) {
         _apiKey = apiKey;
     };
+
+    Constr.prototype.setJsonP = function (useJsonP) {
+        _useJsonP = useJsonP;
+    }
+
+    Constr.prototype.setDebug = function (debug) {
+        _debug = debug;
+    }
 
     /**
      * Sets an implementation of Promises/A+ to be used. E.g. Q, when.
@@ -182,3 +415,98 @@ var OnDemandClient = (function () {
     return Constr;
 
 })();
+
+(function () {
+    var JSONP, createElement, encode, noop, object_to_uri, random, random_string;
+
+    createElement = function (tag) {
+        return window.document.createElement(tag);
+    };
+
+    encode = window.encodeURIComponent;
+
+    random = Math.random;
+
+    JSONP = function (options) {
+        var callback, done, head, params, script;
+        options = options ? options : {};
+        params = {
+            data: options.data || {},
+            error: options.error || noop,
+            success: options.success || noop,
+            url: options.url || ''
+        };
+        if (params.url.length === 0) {
+            throw new Error('MissingUrl');
+        }
+        done = false;
+        callback = params.data[options.callback_name || 'callback'] = 'jsonp_' + random_string(15);
+        window[callback] = function (data) {
+            params.success(data);
+            try {
+                return delete window[callback];
+            } catch (_error) {
+                window[callback] = void 0;
+                return void 0;
+            }
+        };
+        script = createElement('script');
+        script.src = params.url;
+        script.src += params.url.indexOf('?' === -1) ? '&' : '&';
+        script.src += object_to_uri(params.data);
+        script.async = true;
+        script.onerror = function (evt) {
+            return params.error({
+                url: script.src,
+                event: evt
+            });
+        };
+        script.onload = script.onreadystatechange = function () {
+            if (!done && (!this.readyState || this.readyState === 'loaded' || this.readyState === 'complete')) {
+                done = true;
+                script.onload = script.onreadystatechange = null;
+                if (script && script.parentNode) {
+                    return script.parentNode.removeChild(script);
+                }
+            }
+        };
+
+        head = head || window.document.getElementsByTagName('head')[0];
+
+        return head.appendChild(script);
+    };
+
+    noop = function () {
+        return void 0;
+    };
+
+    random_string = function (length) {
+        var str;
+        str = '';
+        while (str.length < length) {
+            str += random().toString(36)[2];
+        }
+        return str;
+    };
+
+    object_to_uri = function (obj) {
+        var data, key, value;
+        data = [];
+        for (key in obj) {
+            value = obj[key];
+            data.push(encode(key) + '=' + encode(value));
+        }
+        return data.join('&');
+    };
+
+    if ((typeof define !== "undefined" && define !== null) && define.amd) {
+        define(function () {
+            return JSONP;
+        });
+    } else if ((typeof module !== "undefined" && module !== null) && module.exports) {
+        module.exports = JSONP;
+    } else {
+        this.JSONP = JSONP;
+    }
+
+}).call(this);
