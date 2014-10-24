@@ -30,35 +30,35 @@ var OnDemandClient = (function () {
 
     Constr.prototype.getQuote = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getQuote.jsonp'
+            url: _baseUrl + '/getQuote.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
     Constr.prototype.getTechnicals = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getTechnicals.jsonp'
+            url: _baseUrl + '/getTechnicals.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
     Constr.prototype.getProfile = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getProfile.jsonp'
+            url: _baseUrl + '/getProfile.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
     Constr.prototype.getInstrumentDefinition = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getInstrumentDefinition.jsonp'
+            url: _baseUrl + '/getInstrumentDefinition.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
     Constr.prototype.getFuturesSpecifications = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getFuturesSpecifications.jsonp'
+            url: _baseUrl + '/getFuturesSpecifications.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
@@ -68,7 +68,7 @@ var OnDemandClient = (function () {
      * */
     Constr.prototype.getFuturesExpirations = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getFuturesExpirations.jsonp'
+            url: _baseUrl + '/getFuturesExpirations.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
@@ -78,14 +78,14 @@ var OnDemandClient = (function () {
      * */
     Constr.prototype.getFuturesOptionsExpirations = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getFuturesOptionsExpirations.jsonp'
+            url: _baseUrl + '/getFuturesOptionsExpirations.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
     Constr.prototype.getCompetitors = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getCompetitors.jsonp'
+            url: _baseUrl + '/getCompetitors.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
@@ -95,133 +95,133 @@ var OnDemandClient = (function () {
      * */
     Constr.prototype.getInsiders = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getInsiders.jsonp'
+            url: _baseUrl + '/getInsiders.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
     Constr.prototype.getHighsLows = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getHighsLows.jsonp'
+            url: _baseUrl + '/getHighsLows.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
     Constr.prototype.getMomentum = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getMomentum.jsonp'
+            url: _baseUrl + '/getMomentum.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
     Constr.prototype.getSignal = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getSignal.jsonp'
+            url: _baseUrl + '/getSignal.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
     Constr.prototype.getRatings = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getRatings.jsonp'
+            url: _baseUrl + '/getRatings.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
     Constr.prototype.getChart = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getChart.jsonp'
+            url: _baseUrl + '/getChart.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
     Constr.prototype.getHistory = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getHistory.jsonp'
+            url: _baseUrl + '/getHistory.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
     Constr.prototype.getFuturesOptions = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getFuturesOptions.jsonp'
+            url: _baseUrl + '/getFuturesOptions.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
     Constr.prototype.getEquityOptions = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getEquityOptions.jsonp'
+            url: _baseUrl + '/getEquityOptions.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
     Constr.prototype.getSpecialOptions = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getSpecialOptions.jsonp'
+            url: _baseUrl + '/getSpecialOptions.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
     Constr.prototype.getWeather = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getWeather.jsonp'
+            url: _baseUrl + '/getWeather.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
     Constr.prototype.getUSDAGrainPrices = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getUSDAGrainPrices.jsonp'
+            url: _baseUrl + '/getUSDAGrainPrices.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
     Constr.prototype.getEarningsEstimates = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getEarningsEstimates.jsonp'
+            url: _baseUrl + '/getEarningsEstimates.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
     Constr.prototype.getCorporateActions = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getCorporateActions.jsonp'
+            url: _baseUrl + '/getCorporateActions.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
     Constr.prototype.getIndexMembers = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getIndexMembers.jsonp'
+            url: _baseUrl + '/getIndexMembers.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
     Constr.prototype.getFinancialHighlights = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getFinancialHighlights.jsonp'
+            url: _baseUrl + '/getFinancialHighlights.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
     Constr.prototype.getIncomeStatements = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getIncomeStatements.jsonp'
+            url: _baseUrl + '/getIncomeStatements.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
     Constr.prototype.getFinancialRatios = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getFinancialRatios.jsonp'
+            url: _baseUrl + '/getFinancialRatios.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
     Constr.prototype.getSECFilings = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getSECFilings.jsonp'
+            url: _baseUrl + '/getSECFilings.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
@@ -231,10 +231,20 @@ var OnDemandClient = (function () {
      * */
     Constr.prototype.getNews = function (options, callback) {
         var requestData = {
-            url: _baseUrl + '/getNews.jsonp'
+            url: _baseUrl + '/getNews.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
+
+    //
+
+    var _format = function () {
+        if (_useJsonP) {
+            return "jsonp";
+        } else {
+            return "json";
+        }
+    }
 
     var _checkParamsAndFetch = function (requestData, options, callback) {
         var opt = {};
@@ -278,7 +288,6 @@ var OnDemandClient = (function () {
                     }
                 }
             });
-
 
         } else {
 
@@ -326,7 +335,6 @@ var OnDemandClient = (function () {
                     req.send(JSON.stringify(requestData.postData));
                 }
             };
-
 
             if (callback) {
                 promiseFunction();
@@ -440,7 +448,7 @@ var OnDemandClient = (function () {
             throw new Error('MissingUrl');
         }
         done = false;
-        callback = params.data[options.callback_name || 'callback'] = 'jsonp_' + random_string(15);
+        callback = params.data[options.callback_name || 'callback'] = 'jsonpODJSClient_' + random_string(15);
         window[callback] = function (data) {
             params.success(data);
             try {
