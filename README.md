@@ -1,6 +1,8 @@
 ## Javascript client for Barchart OnDemand
 
-A no dependency Javascript wrapper for Barchart OnDemand.
+A zero dependency Javascript client for Barchart OnDemand.
+
+Get access to market data and the OnDemand API's in just a few lines of code.
 
 ### Example Code
 
