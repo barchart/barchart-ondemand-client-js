@@ -1,5 +1,7 @@
 ## Javascript client for Barchart OnDemand
 
+A no dependency Javascript wrapper for Barchart OnDemand.
+
 ### Example Code
 
 ```javascript
@@ -20,3 +22,49 @@ onDemand.getQuote({symbols: 'AAPL,GOOG'}, function (err, data) {
     }
 });
 ```
+
+### Supported APIs
+#### Price Data
+* getQuote
+* getHistory
+* getFuturesOptions
+* getSpecialOptions
+* getEquityOptions
+
+#### Profiles and Financial Data
+* getProfile
+* getFinancialHighlights
+* getFinancialRatios 
+* getIncomeStatements 
+* getCompetitors 
+* getInsiders
+* getRatings
+* getIndexMembers
+
+#### Splits, Dividends and Earnings
+* getCorporateActions 
+* getEarningsEstimates
+
+#### Leaderboards and Lists
+* getLeaders 
+* getHighsLows 
+
+#### Charts and Analytics
+* getChart
+* getTechnicals
+* getSignal 
+* getMomentum
+
+#### News and Filings
+* getNews
+* getSECFilings
+
+#### Meta Data
+* getInstrumentDefinition 
+* getFuturesSpecifications 
+* getFuturesExpiration 
+* getFuturesOptionsExpiration
+
+#### Other
+* getWeather
+* getUSDAGrainPrices
