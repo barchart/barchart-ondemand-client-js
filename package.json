@@ -1,0 +1,32 @@
+{
+  "name": "barchart-ondemand-client-js",
+  "version": "1.0.0",
+  "description": "Barchart OnDemand client for Javascript",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/barchart/barchart-ondemand-client-js"
+  },
+  "author": "mike@barchart.com",
+  "license": "BCL",
+  "bugs": {
+    "url": "https://github.com/barchart/barchart-ondemand-client-js/issues"
+  },
+  "homepage": "https://github.com/barchart/barchart-ondemand-client-js",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-jasmine": "^0.8.2",
+    "grunt-contrib-jshint": "^0.11.0",
+    "grunt-contrib-uglify": "^0.8.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "jasmine": "^2.2.1",
+    "load-grunt-tasks": "^3.1.0"
+  }
+}

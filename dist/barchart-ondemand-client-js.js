@@ -1,15 +1,6 @@
-/**
- *
- * Barchart OnDemand client for Javascript.
- *
- * Created by Mike Ehrenberg on 10/21/2014.
- *
- * Modeled after https://github.com/JMPerez/spotify-web-api-js
- *
- * JSONP function from https://github.com/larryosborn/JSONP
- *
- */
-
+/*! barchart-ondemand-client-js - v1.0.0 - 2015-03-05
+* https://github.com/barchart/barchart-ondemand-client-js
+* Copyright (c) 2015 ; Licensed  */
 /* global JSONP */
 
 var OnDemandClient = (function () {
