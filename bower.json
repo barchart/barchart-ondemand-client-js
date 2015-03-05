@@ -6,7 +6,7 @@
     "mike@barchart.com"
   ],
   "description": "Barchart OnDemand client for Javascript",
-  "main": "dist/barchart-ondemand-client.js",
+  "main": "dist/barchart-ondemand-client-js.js",
   "license": "BCL",
   "ignore": [
     "**/.*",
