@@ -1,4 +1,4 @@
-/*! barchart-ondemand-client-js - v1.0.0 - 2015-03-05
+/*! barchart-ondemand-client-js - v1.0.0 - 2015-03-09
 * https://github.com/barchart/barchart-ondemand-client-js
 * Copyright (c) 2015 ; Licensed  */
 /* global JSONP */
@@ -159,6 +159,13 @@ var OnDemandClient = (function () {
     Constr.prototype.getSpecialOptions = function (options, callback) {
         var requestData = {
             url: _baseUrl + '/getSpecialOptions.' + _format()
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getSpecialOptionsClassification = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getSpecialOptionsClassification.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
@@ -395,15 +402,23 @@ var OnDemandClient = (function () {
 
     Constr.prototype.setAPIKey = function (apiKey) {
         _apiKey = apiKey;
+        return this;
     };
 
     Constr.prototype.setJsonP = function (useJsonP) {
         _useJsonP = useJsonP;
-    }
+        return this;
+    };
 
     Constr.prototype.setDebug = function (debug) {
         _debug = debug;
-    }
+        return this;
+    };
+
+    Constr.prototype.setBaseUrl = function (base) {
+        _baseUrl = base;
+        return this;
+    };
 
     /**
      * Sets an implementation of Promises/A+ to be used. E.g. Q, when.
