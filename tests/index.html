@@ -13,6 +13,7 @@ var onDemand = new OnDemandClient();
 
 onDemand.setAPIKey('change-me');
 onDemand.setJsonP(true);
+//onDemand.setBaseUrl('http://localhost:8080/ondemand');
 
 onDemand.getQuote({symbols: 'AAPL,GOOG'}, function (err, data) {
     if (err) {

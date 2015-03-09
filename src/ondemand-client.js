@@ -172,6 +172,13 @@ var OnDemandClient = (function () {
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
+    Constr.prototype.getSpecialOptionsClassification = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getSpecialOptionsClassification.' + _format()
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
     Constr.prototype.getWeather = function (options, callback) {
         var requestData = {
             url: _baseUrl + '/getWeather.' + _format()
@@ -404,15 +411,23 @@ var OnDemandClient = (function () {
 
     Constr.prototype.setAPIKey = function (apiKey) {
         _apiKey = apiKey;
+        return this;
     };
 
     Constr.prototype.setJsonP = function (useJsonP) {
         _useJsonP = useJsonP;
-    }
+        return this;
+    };
 
     Constr.prototype.setDebug = function (debug) {
         _debug = debug;
-    }
+        return this;
+    };
+
+    Constr.prototype.setBaseUrl = function (base) {
+        _baseUrl = base;
+        return this;
+    };
 
     /**
      * Sets an implementation of Promises/A+ to be used. E.g. Q, when.
