@@ -252,6 +252,13 @@ var OnDemandClient = (function () {
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
+    Constr.prototype.get = function (call, options, callback) {
+        var requestData = {
+            url: _baseUrl + '/' + call + '.' + _format()
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
     //
 
     var _format = function () {
