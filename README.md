@@ -7,6 +7,9 @@ Get access to market data and the OnDemand API's in just a few lines of code.
 ### Example Code
 
 ```javascript
+
+<script src="./dist/barchart-ondemand-client-js.js"></script>
+
 var onDemand = new OnDemandClient();
 
 onDemand.setAPIKey('change-me');
