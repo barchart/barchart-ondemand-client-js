@@ -242,6 +242,20 @@ var OnDemandClient = (function () {
         return _checkParamsAndFetch(requestData, options, callback);
     };
 
+    Constr.prototype.getETFDetails = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getETFDetails.' + _format()
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getSymbolLookup = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getSymbolLookUp.' + _format()
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
     /*
      * FIXME: OnDemand will not return more than one source (feed)
      * */
