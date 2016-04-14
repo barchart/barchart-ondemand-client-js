@@ -1,4 +1,4 @@
-/*! barchart-ondemand-client-js - v1.0.0 - 2016-04-06
+/*! barchart-ondemand-client-js - v1.0.0 - 2016-04-14
 * https://github.com/barchart/barchart-ondemand-client-js
 * Copyright (c) 2016 ; Licensed  */
 /* global JSONP */
@@ -7,11 +7,12 @@ var OnDemandClient = (function () {
 
     'use strict';
 
-    var _baseUrl = "http://ondemand.websol.barchart.com";
+    var _baseUrl = 'http://ondemand.websol.barchart.com';
     var _apiKey = null;
     var _promiseImplementation = null;
     var _useJsonP = true;
     var _debug = false;
+    var _sandbox = false;
 
     var Constr = function () {
 
@@ -268,11 +269,19 @@ var OnDemandClient = (function () {
 
     var _format = function () {
         if (_useJsonP) {
-            return "jsonp";
+            return 'jsonp';
         } else {
-            return "json";
+            return 'json';
         }
-    }
+    };
+
+    var _keyFormat = function () {
+        if (_sandbox) {
+            return 'key';
+        } else {
+            return 'apikey';
+        }
+    };
 
     var _checkParamsAndFetch = function (requestData, options, callback) {
         var opt = {};
@@ -289,7 +298,7 @@ var OnDemandClient = (function () {
         /* attach key to request */
 
         if (_apiKey) {
-            requestData.params['apikey'] = _apiKey;
+            requestData.params[_keyFormat()] = _apiKey;
         }
 
         return _doFetch(requestData, cb);
@@ -441,6 +450,16 @@ var OnDemandClient = (function () {
         return this;
     };
 
+    Constr.prototype.setSandbox = function (sandbox) {
+        _sandbox = sandbox;
+        if (_sandbox === true) {
+            _baseUrl = 'http://marketdata.websol.barchart.com';
+        } else {
+            _baseUrl = 'http://ondemand.websol.barchart.com';
+        }
+        return this;
+    };
+
     /**
      * Sets an implementation of Promises/A+ to be used. E.g. Q, when.
      * See [Conformant Implementations](https://github.com/promises-aplus/promises-spec/blob/master/implementations.md)
@@ -543,11 +562,11 @@ var OnDemandClient = (function () {
         return data.join('&');
     };
 
-    if ((typeof define !== "undefined" && define !== null) && define.amd) {
+    if ((typeof define !== 'undefined' && define !== null) && define.amd) {
         define(function () {
             return JSONP;
         });
-    } else if ((typeof module !== "undefined" && module !== null) && module.exports) {
+    } else if ((typeof module !== 'undefined' && module !== null) && module.exports) {
         module.exports = JSONP;
     } else {
         this.JSONP = JSONP;
