@@ -1,6 +1,6 @@
-/*! barchart-ondemand-client-js - v1.0.0 - 2016-04-14
+/*! barchart-ondemand-client-js - v1.0.0 - 2017-02-08
 * https://github.com/barchart/barchart-ondemand-client-js
-* Copyright (c) 2016 ; Licensed  */
+* Copyright (c) 2017 ; Licensed  */
 /* global JSONP */
 
 var OnDemandClient = (function () {
@@ -254,6 +254,13 @@ var OnDemandClient = (function () {
     Constr.prototype.getNews = function (options, callback) {
         var requestData = {
             url: _baseUrl + '/getNews.' + _format()
+        };
+        return _checkParamsAndFetch(requestData, options, callback);
+    };
+
+    Constr.prototype.getBalanceSheets = function (options, callback) {
+        var requestData = {
+            url: _baseUrl + '/getBalanceSheets.' + _format()
         };
         return _checkParamsAndFetch(requestData, options, callback);
     };
