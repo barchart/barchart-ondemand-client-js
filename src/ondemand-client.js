@@ -16,7 +16,7 @@ var OnDemandClient = (function () {
 
     'use strict';
 
-    var _baseUrl = 'http://ondemand.websol.barchart.com';
+    var _baseUrl = 'https://ondemand.websol.barchart.com';
     var _apiKey = null;
     var _promiseImplementation = null;
     var _useJsonP = true;
