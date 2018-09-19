@@ -1,5 +1,5 @@
 {
-  "name": "barchart-ondemand-client-js",
+  "name": "@barchart/ondemand-client-js",
   "version": "2.0.0",
   "description": "Barchart OnDemand client for Javascript",
   "main": "src/ondemand-client.js",
