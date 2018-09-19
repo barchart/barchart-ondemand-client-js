@@ -1,0 +1,9 @@
+{
+    "js": {
+        "brace_style": "collapse,preserve-inline"
+    },
+    "html": {
+        "wrap_line_length": 220,
+        "brace_style": "collapse,preserve-inline"
+    }
+}
