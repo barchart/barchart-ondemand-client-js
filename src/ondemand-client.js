@@ -148,12 +148,10 @@ export class OnDemandClient {
 
     getRatings(options) {
         return new Promise((resolve, reject) => {
-            return new Promise((resolve, reject) => {
-                var requestData = {
-                    url: this.config.baseUrl + '/getRatings.' + this.format()
-                };
-                this._checkParamsAndFetch(requestData, options).then(resolve).catch(reject);
-            });
+            var requestData = {
+                url: this.config.baseUrl + '/getRatings.' + this.format()
+            };
+            this._checkParamsAndFetch(requestData, options).then(resolve).catch(reject);
         });
     };
 
