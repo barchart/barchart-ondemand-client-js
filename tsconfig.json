@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "declaration": true,
+        "target": "ESNext",
+        "module": "ESNext",
+        "lib": [
+            "ESNext",
+            "DOM"
+        ],
+        "useDefineForClassFields": true,
+        "moduleResolution": "Node",
+        "strict": true,
+        "esModuleInterop": true,
+        "noUnusedLocals": true,
+        "noImplicitReturns": true,
+        "noUncheckedIndexedAccess": true,
+        "noImplicitAny": true,
+        "emitDeclarationOnly": true,
+    },
+    "include": [
+        "./src",
+    ],
+    "types": [
+        "./src/*.d.ts"
+    ]
+}

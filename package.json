@@ -1,13 +1,9 @@
 {
   "name": "@barchart/ondemand-client-js",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Barchart OnDemand client for Javascript",
-  "main": "src/ondemand-client.js",
   "directories": {
     "test": "tests"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -15,21 +11,32 @@
   },
   "author": "mike@barchart.com",
   "license": "MIT",
+  "homepage": "https://github.com/barchart/barchart-ondemand-client-js",
   "bugs": {
     "url": "https://github.com/barchart/barchart-ondemand-client-js/issues"
   },
-  "homepage": "https://github.com/barchart/barchart-ondemand-client-js",
-  "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-concat": "^0.5.1",
-    "grunt-contrib-jasmine": "^0.8.2",
-    "grunt-contrib-jshint": "^0.11.0",
-    "grunt-contrib-uglify": "^0.8.0",
-    "grunt-contrib-watch": "^0.6.1",
-    "jasmine": "^2.2.1",
-    "load-grunt-tasks": "^3.1.0"
+  "main": "dist/ondemand-client-node.cjs",
+  "module": "dist/ondemand-client-node.js",
+  "browser": "dist/ondemand-client-browser.js",
+  "types": "dist/ondemand-client.d.ts",
+  "files": [
+    "dist",
+    "tsconfig.json"
+  ],
+  "scripts": {
+    "build": "run-p build:** -l",
+    "build:browser": "esbuild src/ondemand-client.ts --outfile=dist/ondemand-client-browser.js --platform=browser --bundle --target=es2020 --format=esm",
+    "build:node": "tsup --entry.ondemand-client-node src/ondemand-client.ts --format esm,cjs --platform=node --target=es2020",
+    "build:types": "tsc --outDir dist",
+    "generate": "node devtools/generate-interfaces-from-docs.js"
   },
   "dependencies": {
     "axios": "^0.18.0"
+  },
+  "devDependencies": {
+    "jsdom": "^22.1.0",
+    "npm-run-all": "^4.1.5",
+    "tsup": "^7.2.0",
+    "typescript": "^5.1.6"
   }
 }

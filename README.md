@@ -6,21 +6,20 @@ Get access to market data and the OnDemand API's in just a few lines of code.
 
 ### Example Code
 
-```javascript
+```typescript
+import { OnDemandClient } from "@barchart/ondemand-client-js";
+const onDemand = new OnDemandClient(); 
 
-<script src="./dist/barchart-ondemand-client.js"></script>
-
-const onDemand = new Barchart.OnDemandClient();
-
+// onDemand.setJsonP(false); // set if code is running server-side
 onDemand.setAPIKey('change-me');
 onDemand.setJsonP(true);
 
 /* get a quote for AAPL and GOOG */
-onDemand.getQuote({symbols: 'AAPL,GOOG'}).then((data) {
-  const quotes = data.results;
-  for (x in quotes) {
-    console.log("getQuote: " + quotes[x].symbol + " [" + quotes[x].name + "] = " + JSON.stringify(quotes[x]));
-  }
+onDemand.getQuote({symbols: 'AAPL,GOOG'}).then((data) => {
+    const quotes = data.results;
+    for (x in quotes) {
+      console.log("getQuote: " + quotes[x].symbol + " [" + quotes[x].name + "] = " + JSON.stringify(quotes[x]));
+    }
 });
 ```
 
