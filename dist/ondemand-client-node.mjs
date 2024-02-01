@@ -112,7 +112,7 @@ var OnDemandClient = class {
     let requestData = {
       url: this.config.baseUrl + "/getTechnicals." + this.format()
     };
-    this._checkParamsAndFetch(requestData, options);
+    return this._checkParamsAndFetch(requestData, options);
   }
   getProfile(options) {
     let requestData = {

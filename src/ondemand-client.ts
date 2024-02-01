@@ -136,7 +136,7 @@ export class OnDemandClient {
         let requestData = {
             url: this.config.baseUrl + '/getTechnicals.' + this.format()
         };
-        this._checkParamsAndFetch<IOnDemandGetTechnicalsResponse>(requestData, options);
+        return this._checkParamsAndFetch<IOnDemandGetTechnicalsResponse>(requestData, options);
     };
 
     getProfile(options: IOnDemandGetProfileOptions) {

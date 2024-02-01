@@ -75,7 +75,12 @@ function inputTypeMapper(input, resourceName, fieldName, values) {
             if (resourceName === "GetNews" && fieldName === "subCategory") {
                 return "string[]";
             }
-            return "(" + values.split(",").map(x => `"${x.trim()}"`).join(" | ") + ")[]";
+
+            const union = "(" + values.split(",").map(x => `"${x.trim()}"`).join(" | ") + ")";  
+            if (fieldName.endsWith("s")) {
+                return union + "[]";
+            }
+            return union ;
         }
         case input.startsWith("integer ("):
         case input.startsWith("double ("):

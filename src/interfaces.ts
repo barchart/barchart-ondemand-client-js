@@ -170,12 +170,12 @@ export interface IOnDemandGetQuoteResponse extends IOnDemandResponse {
 };
 export interface IOnDemandGetHistoryOptions {
     symbol: string;
-	type: ("ticks" | "minutes" | "nearbyMinutes" | "formTMinutes" | "daily" | "dailyNearest" | "dailyContinue" | "weekly" | "weeklyNearest" | "weeklyContinue" | "monthly" | "monthlyNearest" | "monthlyContinue" | "quarterly" | "quarterlyNearest" | "quarterlyContinue" | "yearly" | "yearlyNearest" | "yearlyContinue")[];
+	type: ("ticks" | "minutes" | "nearbyMinutes" | "formTMinutes" | "daily" | "dailyNearest" | "dailyContinue" | "weekly" | "weeklyNearest" | "weeklyContinue" | "monthly" | "monthlyNearest" | "monthlyContinue" | "quarterly" | "quarterlyNearest" | "quarterlyContinue" | "yearly" | "yearlyNearest" | "yearlyContinue");
 	startDate?: string;
 	endDate?: string;
 	maxRecords?: number;
 	interval?: number;
-	order?: ("asc" | "desc")[];
+	order?: ("asc" | "desc");
 	sessionFilter?: string;
 	splits?: never /* possible values [boolean, 1|0 , '1'|'0', 'true'|'false'] 
  please check docs of specific method for given property. 
@@ -183,15 +183,15 @@ export interface IOnDemandGetHistoryOptions {
 	dividends?: never /* possible values [boolean, 1|0 , '1'|'0', 'true'|'false'] 
  please check docs of specific method for given property. 
  please fix in barchart-ondemand-client-js as well! */;
-	volume?: ("total" | "sum" | "contract" | "sumcontract" | "sumtotal")[];
+	volume?: ("total" | "sum" | "contract" | "sumcontract" | "sumtotal");
 	nearby?: number;
 	jerq?: never /* possible values [boolean, 1|0 , '1'|'0', 'true'|'false'] 
  please check docs of specific method for given property. 
  please fix in barchart-ondemand-client-js as well! */;
 	exchange?: string | string[];
-	backAdjust?: ("true" | "false")[];
-	daysToExpiration?: ("0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12" | "13" | "14" | "15" | "16" | "17" | "18" | "19" | "20" | "21" | "22" | "23" | "24" | "25" | "26" | "27" | "28" | "29" | "30" | "31" | "32" | "33" | "34" | "35" | "36" | "37" | "38" | "39" | "40" | "41" | "42" | "43" | "44" | "45" | "46" | "47" | "48" | "49" | "50" | "51" | "52" | "53" | "54" | "55" | "56" | "57" | "58" | "59" | "60")[];
-	contractRoll?: ("expiration" | "combined")[];
+	backAdjust?: ("true" | "false");
+	daysToExpiration?: ("0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12" | "13" | "14" | "15" | "16" | "17" | "18" | "19" | "20" | "21" | "22" | "23" | "24" | "25" | "26" | "27" | "28" | "29" | "30" | "31" | "32" | "33" | "34" | "35" | "36" | "37" | "38" | "39" | "40" | "41" | "42" | "43" | "44" | "45" | "46" | "47" | "48" | "49" | "50" | "51" | "52" | "53" | "54" | "55" | "56" | "57" | "58" | "59" | "60");
+	contractRoll?: ("expiration" | "combined");
 }
 
 export interface IOnDemandGetHistoryResponse extends IOnDemandResponse {
@@ -283,7 +283,7 @@ export interface IOnDemandGetSpecialOptionsOptions {
 	premiumRange?: string;
 	mode?: string;
 	fields?: string | string[];
-	sortDirection?: ("ASC" | "DESC")[];
+	sortDirection?: ("ASC" | "DESC");
 }
 
 export interface IOnDemandGetSpecialOptionsResponse extends IOnDemandResponse {
@@ -483,7 +483,7 @@ export interface IOnDemandGetFinancialRatiosResponse extends IOnDemandResponse {
 };
 export interface IOnDemandGetIncomeStatementsOptions {
     symbols: string | string[];
-	frequency: ("Quarter" | "Annual")[];
+	frequency: ("Quarter" | "Annual");
 	count?: number;
 	rawData?: number;
 }
@@ -512,7 +512,7 @@ export interface IOnDemandGetIncomeStatementsResponse extends IOnDemandResponse 
 };
 export interface IOnDemandGetBalanceSheetsOptions {
     symbols: string | string[];
-	frequency: ("Quarter" | "Annual")[];
+	frequency: ("Quarter" | "Annual");
 	count?: number;
 	rawData?: number;
 }
@@ -604,7 +604,7 @@ export interface IOnDemandGetIndexMembersResponse extends IOnDemandResponse {
 };
 export interface IOnDemandGetCashFlowOptions {
     symbols: string | string[];
-	reportPeriod?: ("12M" | "3M")[];
+	reportPeriod?: ("12M" | "3M");
 	fields?: string | string[];
 	numberOfYears?: number;
 }
@@ -653,7 +653,7 @@ export interface IOnDemandGetCorporateActionsOptions {
     symbols: string | string[];
 	startDate?: string;
 	endDate?: string;
-	eventType: ("split" | "dividend" | "earnings")[];
+	eventType: ("split" | "dividend" | "earnings");
 	maxRecords?: number;
 }
 
@@ -696,11 +696,11 @@ export interface IOnDemandGetEarningsEstimatesResponse extends IOnDemandResponse
 };
 export interface IOnDemandGetLeadersOptions {
     exchanges?: string[];
-	assetType: ("STK" | "ETF" | "FUND" | "FUT" | "FOREX")[];
-	type: ("active" | "active_5d" | "active_1m" | "active_3m" | "active_6m" | "active_9m" | "active_12m" | "active_ytd" | "gainers" | "gainers_5d" | "gainers_1m" | "gainers_3m" | "gainers_6m" | "gainers_9m" | "gainers_12m" | "gainers_ytd" | "losers" | "losers_5d" | "losers_1m" | "losers_3m" | "losers_6m" | "losers_9m" | "losers_12m" | "losers_ytd" | "hot" | "hot_daily" | "hot_weekly" | "hot_monthly" | "nothot" | "nothot_daily" | "nothot_weekly" | "nothot_monthly" | "barchart")[];
+	assetType: ("STK" | "ETF" | "FUND" | "FUT" | "FOREX");
+	type: ("active" | "active_5d" | "active_1m" | "active_3m" | "active_6m" | "active_9m" | "active_12m" | "active_ytd" | "gainers" | "gainers_5d" | "gainers_1m" | "gainers_3m" | "gainers_6m" | "gainers_9m" | "gainers_12m" | "gainers_ytd" | "losers" | "losers_5d" | "losers_1m" | "losers_3m" | "losers_6m" | "losers_9m" | "losers_12m" | "losers_ytd" | "hot" | "hot_daily" | "hot_weekly" | "hot_monthly" | "nothot" | "nothot_daily" | "nothot_weekly" | "nothot_monthly" | "barchart");
 	maxRecords?: number;
-	period?: ("5d" | "20d" | "65d" | "100d" | "260d")[];
-	sortDirection?: ("ASC" | "DESC")[];
+	period?: ("5d" | "20d" | "65d" | "100d" | "260d");
+	sortDirection?: ("ASC" | "DESC");
 }
 
 export interface IOnDemandGetLeadersResponse extends IOnDemandResponse {
@@ -725,9 +725,9 @@ export interface IOnDemandGetLeadersResponse extends IOnDemandResponse {
 };
 export interface IOnDemandGetHighsLowsOptions {
     exchanges?: string[];
-	assetType: ("STK" | "ETF" | "FUND" | "FUT" | "FOREX" | "BARCHART")[];
-	type?: ("high" | "low")[];
-	period: ("5d" | "20d" | "65d" | "100d" | "260d")[];
+	assetType: ("STK" | "ETF" | "FUND" | "FUT" | "FOREX" | "BARCHART");
+	type?: ("high" | "low");
+	period: ("5d" | "20d" | "65d" | "100d" | "260d");
 	maxRecords?: number;
 	offset?: number;
 }
@@ -754,14 +754,14 @@ export interface IOnDemandGetHighsLowsResponse extends IOnDemandResponse {
 };
 export interface IOnDemandGetChartOptions {
     symbols: string | string[];
-	type?: ("BAR" | "LINE" | "CANDLE" | "AREA")[];
+	type?: ("BAR" | "LINE" | "CANDLE" | "AREA");
 	width?: number;
 	height?: number;
 	volume?: never /* possible values [boolean, 1|0 , '1'|'0', 'true'|'false'] 
  please check docs of specific method for given property. 
  please fix in barchart-ondemand-client-js as well! */;
-	period?: ("1d" | "5d" | "3d" | "10d" | "1m" | "3m" | "6m" | "1y" | "2y" | "3y" | "5y" | "10y" | "15y" | "20y" | "25y" | "ytd")[];
-	interval?: ("DO" | "DN" | "WO" | "WN" | "MO" | "MN")[];
+	period?: ("1d" | "5d" | "3d" | "10d" | "1m" | "3m" | "6m" | "1y" | "2y" | "3y" | "5y" | "10y" | "15y" | "20y" | "25y" | "ytd");
+	interval?: ("DO" | "DN" | "WO" | "WN" | "MO" | "MN");
 	indicators?: string | string[];
 	frequencyType?: string;
 }
@@ -1128,13 +1128,13 @@ export interface IOnDemandGetETFDetailsResponse extends IOnDemandResponse {
 export interface IOnDemandGetNewsOptions {
     sources?: string[];
 	symbols?: string | string[];
-	category?: ("companies" | "politics" | "geography" | "commodities" | "economics" | "stocks" | "futures")[];
+	category?: ("companies" | "politics" | "geography" | "commodities" | "economics" | "stocks" | "futures");
 	subCategory?: string[];
 	series?: string[];
 	keyword?: string;
 	maxRecords?: number;
 	startDate?: string;
-	displayType: ("headline" | "preview" | "full")[];
+	displayType: ("headline" | "preview" | "full");
 	images?: boolean;
 	storyId?: number;
 	rss?: boolean;
@@ -1176,7 +1176,7 @@ export interface IOnDemandGetNewsResponse extends IOnDemandResponse {
 };
 export interface IOnDemandGetSECFilingsOptions {
     symbols: string | string[];
-	filingType: ("AllEx" | "All" | "10k" | "10q")[];
+	filingType: ("AllEx" | "All" | "10k" | "10q");
 	maxRecords?: number;
 	startDate?: string;
 }
@@ -1304,11 +1304,11 @@ export interface IOnDemandGetForexForwardCurvesResponse extends IOnDemandRespons
     }[];
 };
 export interface IOnDemandGetWeatherOptions {
-    weatherType?: ("CC" | "F" | "MAP")[];
+    weatherType?: ("CC" | "F" | "MAP");
 	zipCode?: string;
 	fields?: string | string[];
-	mapType?: ("localRadarAnimation" | "usRadarSatellite" | "usRadarSatelliteAnimation" | "todaysWeatherMap" | "currentWindConditions" | "todaysPrecipitationAccumulation" | "dailyPrecipitation" | "usSoilMoisture" | "usCurrentTemperatures")[];
-	mapRegion?: ("centralPlains" | "dakotas" | "californiaArizona" | "colorado" | "deepSouth" | "delta" | "farWest" | "florida" | "greatBasin" | "greatLakes" | "midAtlantic" | "montana" | "northEast" | "ohioValley" | "pacificNorthwest" | "rockyMountains" | "southAtlantic" | "southPlains" | "southTexas" | "southWest")[];
+	mapType?: ("localRadarAnimation" | "usRadarSatellite" | "usRadarSatelliteAnimation" | "todaysWeatherMap" | "currentWindConditions" | "todaysPrecipitationAccumulation" | "dailyPrecipitation" | "usSoilMoisture" | "usCurrentTemperatures");
+	mapRegion?: ("centralPlains" | "dakotas" | "californiaArizona" | "colorado" | "deepSouth" | "delta" | "farWest" | "florida" | "greatBasin" | "greatLakes" | "midAtlantic" | "montana" | "northEast" | "ohioValley" | "pacificNorthwest" | "rockyMountains" | "southAtlantic" | "southPlains" | "southTexas" | "southWest");
 	mapWidth?: number;
 	mapHeight?: number;
 }
@@ -1353,7 +1353,7 @@ export interface IOnDemandGetWeatherResponse extends IOnDemandResponse {
     }[];
 };
 export interface IOnDemandGetGrainBidsOptions {
-    requestType?: ("commodities" | "locations" | "bids")[];
+    requestType?: ("commodities" | "locations" | "bids");
 	location?: string | string[];
 	latitude?: number;
 	longitude?: number;
@@ -1441,7 +1441,7 @@ export interface IOnDemandGetCmdtyStatsOptions {
     symbol: string;
 	startDate?: string;
 	endDate?: string;
-	order?: ("asc" | "desc")[];
+	order?: ("asc" | "desc");
 }
 
 export interface IOnDemandGetCmdtyStatsResponse extends IOnDemandResponse {
@@ -1470,11 +1470,11 @@ export interface IOnDemandGetCmdtyStatsResponse extends IOnDemandResponse {
 export interface IOnDemandGetCmdtyCalendarOptions {
     startDate: string;
 	endDate: string;
-	category?: ("All" | "Ag" | "Energy" | "Econ" | "Freight" | "Metals" | "Rates")[];
+	category?: ("All" | "Ag" | "Energy" | "Econ" | "Freight" | "Metals" | "Rates");
 	country?: string | string[];
-	importance?: ("1" | "2" | "3")[];
+	importance?: ("1" | "2" | "3");
 	symbol?: string | string[];
-	order?: ("asc" | "desc")[];
+	order?: ("asc" | "desc");
 	fields?: ("reference_ending" | "prior_reference_ending" | "status")[];
 }
 
