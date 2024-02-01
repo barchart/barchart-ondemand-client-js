@@ -1,6 +1,7 @@
 /**
  * Not sure if code is even functioning
  */
+let head;
 export class JSONP {
     constructor() {
         //

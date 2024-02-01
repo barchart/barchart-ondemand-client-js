@@ -16,7 +16,7 @@
     "url": "https://github.com/barchart/barchart-ondemand-client-js/issues"
   },
   "main": "dist/ondemand-client-node.cjs",
-  "module": "dist/ondemand-client-node.js",
+  "module": "dist/ondemand-client-node.mjs",
   "browser": "dist/ondemand-client-browser.js",
   "types": "dist/ondemand-client.d.ts",
   "files": [
@@ -25,7 +25,7 @@
   ],
   "scripts": {
     "build": "run-p build:** -l",
-    "build:browser": "esbuild src/ondemand-client.ts --outfile=dist/ondemand-client-browser.js --platform=browser --bundle --target=es2020 --format=esm",
+    "build:browser": "esbuild src/ondemand-client.ts --outfile=dist/ondemand-client-browser.js --platform=browser --bundle --target=esnext --format=esm",
     "build:node": "tsup --entry.ondemand-client-node src/ondemand-client.ts --format esm,cjs --platform=node --target=es2020",
     "build:types": "tsc --outDir dist",
     "generate": "node devtools/generate-interfaces-from-docs.js"

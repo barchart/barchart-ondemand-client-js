@@ -170,22 +170,28 @@ export interface IOnDemandGetQuoteResponse extends IOnDemandResponse {
 };
 export interface IOnDemandGetHistoryOptions {
     symbol: string;
-	type: "ticks" | " minutes" | " nearbyMinutes" | " formTMinutes" | " daily" | " dailyNearest" | " dailyContinue" | " weekly" | " weeklyNearest" | " weeklyContinue" | " monthly" | " monthlyNearest" | " monthlyContinue" | " quarterly" | " quarterlyNearest" | " quarterlyContinue" | " yearly" | " yearlyNearest" | " yearlyContinue";
+	type: ("ticks" | "minutes" | "nearbyMinutes" | "formTMinutes" | "daily" | "dailyNearest" | "dailyContinue" | "weekly" | "weeklyNearest" | "weeklyContinue" | "monthly" | "monthlyNearest" | "monthlyContinue" | "quarterly" | "quarterlyNearest" | "quarterlyContinue" | "yearly" | "yearlyNearest" | "yearlyContinue")[];
 	startDate?: string;
 	endDate?: string;
 	maxRecords?: number;
 	interval?: number;
-	order?: "asc" | " desc";
+	order?: ("asc" | "desc")[];
 	sessionFilter?: string;
-	splits?: "true" | "false";
-	dividends?: "true" | "false";
-	volume?: "total" | " sum" | " contract" | " sumcontract" | " sumtotal";
+	splits?: never /* possible values [boolean, 1|0 , '1'|'0', 'true'|'false'] 
+ please check docs of specific method for given property. 
+ please fix in barchart-ondemand-client-js as well! */;
+	dividends?: never /* possible values [boolean, 1|0 , '1'|'0', 'true'|'false'] 
+ please check docs of specific method for given property. 
+ please fix in barchart-ondemand-client-js as well! */;
+	volume?: ("total" | "sum" | "contract" | "sumcontract" | "sumtotal")[];
 	nearby?: number;
-	jerq?: "true" | "false";
+	jerq?: never /* possible values [boolean, 1|0 , '1'|'0', 'true'|'false'] 
+ please check docs of specific method for given property. 
+ please fix in barchart-ondemand-client-js as well! */;
 	exchange?: string | string[];
-	backAdjust?: "true" | " false";
-	daysToExpiration?: "0" | " 1" | " 2" | " 3" | " 4" | " 5" | " 6" | " 7" | " 8" | " 9" | " 10" | " 11" | " 12" | " 13" | " 14" | " 15" | " 16" | " 17" | " 18" | " 19" | " 20" | " 21" | " 22" | " 23" | " 24" | " 25" | " 26" | " 27" | " 28" | " 29" | " 30" | " 31" | " 32" | " 33" | " 34" | " 35" | " 36" | " 37" | " 38" | " 39" | " 40" | " 41" | " 42" | " 43" | " 44" | " 45" | " 46" | " 47" | " 48" | " 49" | " 50" | " 51" | " 52" | " 53" | " 54" | " 55" | " 56" | " 57" | " 58" | " 59" | " 60";
-	contractRoll?: "expiration" | " combined";
+	backAdjust?: ("true" | "false")[];
+	daysToExpiration?: ("0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12" | "13" | "14" | "15" | "16" | "17" | "18" | "19" | "20" | "21" | "22" | "23" | "24" | "25" | "26" | "27" | "28" | "29" | "30" | "31" | "32" | "33" | "34" | "35" | "36" | "37" | "38" | "39" | "40" | "41" | "42" | "43" | "44" | "45" | "46" | "47" | "48" | "49" | "50" | "51" | "52" | "53" | "54" | "55" | "56" | "57" | "58" | "59" | "60")[];
+	contractRoll?: ("expiration" | "combined")[];
 }
 
 export interface IOnDemandGetHistoryResponse extends IOnDemandResponse {
@@ -207,8 +213,12 @@ export interface IOnDemandGetHistoryResponse extends IOnDemandResponse {
 export interface IOnDemandGetClosePriceOptions {
     symbols: string | string[];
 	date?: string;
-	splits?: "true" | "false";
-	dividends?: "true" | "false";
+	splits?: never /* possible values [boolean, 1|0 , '1'|'0', 'true'|'false'] 
+ please check docs of specific method for given property. 
+ please fix in barchart-ondemand-client-js as well! */;
+	dividends?: never /* possible values [boolean, 1|0 , '1'|'0', 'true'|'false'] 
+ please check docs of specific method for given property. 
+ please fix in barchart-ondemand-client-js as well! */;
 }
 
 export interface IOnDemandGetClosePriceResponse extends IOnDemandResponse {
@@ -273,7 +283,7 @@ export interface IOnDemandGetSpecialOptionsOptions {
 	premiumRange?: string;
 	mode?: string;
 	fields?: string | string[];
-	sortDirection?: "ASC" | " DESC";
+	sortDirection?: ("ASC" | "DESC")[];
 }
 
 export interface IOnDemandGetSpecialOptionsResponse extends IOnDemandResponse {
@@ -318,8 +328,13 @@ export interface IOnDemandGetEquityOptionsOptions {
 	expirationDate?: string;
 	optionType?: string;
 	fields?: string | string[];
-	onlyStrikes?: "true" | "false";
-	legacySymbols?: "true" | "false";
+	onlyStrikes?: never /* possible values [boolean, 1|0 , '1'|'0', 'true'|'false'] 
+ please check docs of specific method for given property. 
+ please fix in barchart-ondemand-client-js as well! */;
+	legacySymbols?: 1 | 0;
+	returnActualLegacySymbol?: never /* possible values [boolean, 1|0 , '1'|'0', 'true'|'false'] 
+ please check docs of specific method for given property. 
+ please fix in barchart-ondemand-client-js as well! */;
 }
 
 export interface IOnDemandGetEquityOptionsResponse extends IOnDemandResponse {
@@ -468,7 +483,7 @@ export interface IOnDemandGetFinancialRatiosResponse extends IOnDemandResponse {
 };
 export interface IOnDemandGetIncomeStatementsOptions {
     symbols: string | string[];
-	frequency: "Quarter" | " Annual";
+	frequency: ("Quarter" | "Annual")[];
 	count?: number;
 	rawData?: number;
 }
@@ -497,7 +512,7 @@ export interface IOnDemandGetIncomeStatementsResponse extends IOnDemandResponse 
 };
 export interface IOnDemandGetBalanceSheetsOptions {
     symbols: string | string[];
-	frequency: "Quarter" | " Annual";
+	frequency: ("Quarter" | "Annual")[];
 	count?: number;
 	rawData?: number;
 }
@@ -575,7 +590,7 @@ export interface IOnDemandGetRatingsResponse extends IOnDemandResponse {
     }[];
 };
 export interface IOnDemandGetIndexMembersOptions {
-    symbol: "$ONE" | " $IDX" | " $SPX" | " $IQY" | " $RUI" | " $IUX" | " $RUA" | " $IUXX" | " $DOWC" | " $DOWT" | " $DOWU" | " $DOWI" | " $TXCX" | " $JX" | " $TXSX" | " $TTCS" | " $TOOC" | " $TXTW" | " $TTCD" | " $TTCS" | " $TTEN" | " $TTFS" | " $TTIN" | " $TTTK" | " $TTMT" | " $TTHC" | " $TTRE" | " $TTTS" | " $TTUT" | " $RTCM" | " $RTRE";
+    symbol: string[];
 	fields?: string | string[];
 }
 
@@ -589,7 +604,7 @@ export interface IOnDemandGetIndexMembersResponse extends IOnDemandResponse {
 };
 export interface IOnDemandGetCashFlowOptions {
     symbols: string | string[];
-	reportPeriod?: "12M" | " 3M";
+	reportPeriod?: ("12M" | "3M")[];
 	fields?: string | string[];
 	numberOfYears?: number;
 }
@@ -638,7 +653,7 @@ export interface IOnDemandGetCorporateActionsOptions {
     symbols: string | string[];
 	startDate?: string;
 	endDate?: string;
-	eventType: "split" | " dividend" | " earnings";
+	eventType: ("split" | "dividend" | "earnings")[];
 	maxRecords?: number;
 }
 
@@ -680,12 +695,12 @@ export interface IOnDemandGetEarningsEstimatesResponse extends IOnDemandResponse
     }[];
 };
 export interface IOnDemandGetLeadersOptions {
-    exchanges?: "AMEX" | " CBOT" | " CBOTM" | " CME" | " COMEX" | " COMEX" | " FOREX" | " GBLX" | " ICE" | " ICEFI" | " ICEUS" | " WCE" | " CADFUNDS" | " FUND" | " INDEX" | " INDEX-CBOE" | " INDEX-DOW" | " INDEX-NQ" | " INDEX-NY" | " INDEX-SP" | " INDEX-TSX" | " IOM" | " IMM" | " KCBT" | " LCE" | " MGEX" | " NASDAQ" | " OTHER OTC" | " RATES" | " RATE" | " NYMEX" | " NYMI" | " NYSE" | " NLIF" | " TSX" | " TSX-V" | " NEO" | " SECTOR" | " CNSX" | " LIFFE" | " EUIDX" | " EUREX" | " BMF" | " MATIF" | " CXMI" | " CXMI" | " HKFE" | " SPECIAL" | " INDEX-RL" | " MATBA" | " NCDEX" | " ASX" | " ROFEX" | " OTC-BB" | " SIMEX" | " CZCE" | " CROSS" | " BSE" | " MNTRL" | " ECON" | " TOCOM" | " MEFF" | " ENDEX" | " SAFEX" | " TIFFE" | " CASH" | " MCX" | " NZX" | " MDEX" | " DGCX" | " NSE" | " CBOE" | " DME" | " OMX" | " CFE" | " TURK" | " TFEX" | " TAIWA" | " SHFE" | " DCE" | " BATS" | " LSE" | " LME" | " EEX" | " CFFEX" | " JPX" | " SFE" | " CRYPTO" | " GRBIDS" | " AGIDX_B_COU" | " AGIDX_B_CRD" | " AGIDX_B_NAT" | " AGIDX_B_REG" | " AGIDX_B_STA" | " AGIDX_P_COU" | " AGIDX_P_CRD" | " AGIDX_P_NAT" | " AGIDX_P_REG" | " AGIDX_P_STA" | " MTIDX_P_NAT_SY" | " PLATTS" | " PLATTS_BF" | " PLATTS_BX" | " C3" | " EURNXT_EQ_BE" | " EURNXT_EQ_FR" | " EURNXT_EQ_NL" | " EURNXT_EQ_PT" | " AGYIELD" | " CMDTY_STATS" | " CSTATS_BARCHART" | " CSTATS_BHUGHES" | " CSTATS_CFTC" | " CSTATS_ENGCORPS" | " CSTATS_EUSTAT" | " CSTATS_STATCAN" | " CSTATS_USBEA" | " CSTATS_USBLS" | " CSTATS_USCB" | " CSTATS_USDA" | " CSTATS_USEIA" | " CMENRF" | " CMENRF_IDX" | " CMENWF" | " CMMTPM" | " AGYIELD_BIW" | " SCB_BIOFUEL_EU" | " SCB_BIOFUEL_US" | " SCB_ETHANOL" | " SMALL" | " AGIDX_B_FCST" | " MER_ORG_GRN" | " MER_ORG_IMP" | " PRM_GLB_BIO" | " PRM_LOW_CAR" | " CSTATS_CONAB";
-	assetType: "STK" | " ETF" | " FUND" | " FUT" | " FOREX";
-	type: "active" | " active_5d" | " active_1m" | " active_3m" | " active_6m" | " active_9m" | " active_12m" | " active_ytd" | " gainers" | " gainers_5d" | " gainers_1m" | " gainers_3m" | " gainers_6m" | " gainers_9m" | " gainers_12m" | " gainers_ytd" | " losers" | " losers_5d" | " losers_1m" | " losers_3m" | " losers_6m" | " losers_9m" | " losers_12m" | " losers_ytd" | " hot" | " hot_daily" | " hot_weekly" | " hot_monthly" | " nothot" | " nothot_daily" | " nothot_weekly" | " nothot_monthly" | " barchart";
+    exchanges?: string[];
+	assetType: ("STK" | "ETF" | "FUND" | "FUT" | "FOREX")[];
+	type: ("active" | "active_5d" | "active_1m" | "active_3m" | "active_6m" | "active_9m" | "active_12m" | "active_ytd" | "gainers" | "gainers_5d" | "gainers_1m" | "gainers_3m" | "gainers_6m" | "gainers_9m" | "gainers_12m" | "gainers_ytd" | "losers" | "losers_5d" | "losers_1m" | "losers_3m" | "losers_6m" | "losers_9m" | "losers_12m" | "losers_ytd" | "hot" | "hot_daily" | "hot_weekly" | "hot_monthly" | "nothot" | "nothot_daily" | "nothot_weekly" | "nothot_monthly" | "barchart")[];
 	maxRecords?: number;
-	period?: "5d" | " 20d" | " 65d" | " 100d" | " 260d";
-	sortDirection?: "ASC" | " DESC";
+	period?: ("5d" | "20d" | "65d" | "100d" | "260d")[];
+	sortDirection?: ("ASC" | "DESC")[];
 }
 
 export interface IOnDemandGetLeadersResponse extends IOnDemandResponse {
@@ -709,10 +724,10 @@ export interface IOnDemandGetLeadersResponse extends IOnDemandResponse {
     }[];
 };
 export interface IOnDemandGetHighsLowsOptions {
-    exchanges?: "AMEX" | " CBOT" | " CBOTM" | " CME" | " COMEX" | " COMEX" | " FOREX" | " GBLX" | " ICE" | " ICEFI" | " ICEUS" | " WCE" | " CADFUNDS" | " FUND" | " INDEX" | " INDEX-CBOE" | " INDEX-DOW" | " INDEX-NQ" | " INDEX-NY" | " INDEX-SP" | " INDEX-TSX" | " IOM" | " IMM" | " KCBT" | " LCE" | " MGEX" | " NASDAQ" | " OTHER OTC" | " RATES" | " RATE" | " NYMEX" | " NYMI" | " NYSE" | " NLIF" | " TSX" | " TSX-V" | " NEO" | " SECTOR" | " CNSX" | " LIFFE" | " EUIDX" | " EUREX" | " BMF" | " MATIF" | " CXMI" | " CXMI" | " HKFE" | " SPECIAL" | " INDEX-RL" | " MATBA" | " NCDEX" | " ASX" | " ROFEX" | " OTC-BB" | " SIMEX" | " CZCE" | " CROSS" | " BSE" | " MNTRL" | " ECON" | " TOCOM" | " MEFF" | " ENDEX" | " SAFEX" | " TIFFE" | " CASH" | " MCX" | " NZX" | " MDEX" | " DGCX" | " NSE" | " CBOE" | " DME" | " OMX" | " CFE" | " TURK" | " TFEX" | " TAIWA" | " SHFE" | " DCE" | " BATS" | " LSE" | " LME" | " EEX" | " CFFEX" | " JPX" | " SFE" | " CRYPTO" | " GRBIDS" | " AGIDX_B_COU" | " AGIDX_B_CRD" | " AGIDX_B_NAT" | " AGIDX_B_REG" | " AGIDX_B_STA" | " AGIDX_P_COU" | " AGIDX_P_CRD" | " AGIDX_P_NAT" | " AGIDX_P_REG" | " AGIDX_P_STA" | " MTIDX_P_NAT_SY" | " PLATTS" | " PLATTS_BF" | " PLATTS_BX" | " C3" | " EURNXT_EQ_BE" | " EURNXT_EQ_FR" | " EURNXT_EQ_NL" | " EURNXT_EQ_PT" | " AGYIELD" | " CMDTY_STATS" | " CSTATS_BARCHART" | " CSTATS_BHUGHES" | " CSTATS_CFTC" | " CSTATS_ENGCORPS" | " CSTATS_EUSTAT" | " CSTATS_STATCAN" | " CSTATS_USBEA" | " CSTATS_USBLS" | " CSTATS_USCB" | " CSTATS_USDA" | " CSTATS_USEIA" | " CMENRF" | " CMENRF_IDX" | " CMENWF" | " CMMTPM" | " AGYIELD_BIW" | " SCB_BIOFUEL_EU" | " SCB_BIOFUEL_US" | " SCB_ETHANOL" | " SMALL" | " AGIDX_B_FCST" | " MER_ORG_GRN" | " MER_ORG_IMP" | " PRM_GLB_BIO" | " PRM_LOW_CAR" | " CSTATS_CONAB";
-	assetType: "STK" | " ETF" | " FUND" | " FUT" | " FOREX" | " BARCHART";
-	type?: "high" | " low";
-	period: "5d" | " 20d" | " 65d" | " 100d" | " 260d";
+    exchanges?: string[];
+	assetType: ("STK" | "ETF" | "FUND" | "FUT" | "FOREX" | "BARCHART")[];
+	type?: ("high" | "low")[];
+	period: ("5d" | "20d" | "65d" | "100d" | "260d")[];
 	maxRecords?: number;
 	offset?: number;
 }
@@ -739,12 +754,14 @@ export interface IOnDemandGetHighsLowsResponse extends IOnDemandResponse {
 };
 export interface IOnDemandGetChartOptions {
     symbols: string | string[];
-	type?: "BAR" | " LINE" | " CANDLE" | " AREA";
+	type?: ("BAR" | "LINE" | "CANDLE" | "AREA")[];
 	width?: number;
 	height?: number;
-	volume?: "true" | "false";
-	period?: "1d" | " 5d" | " 3d" | " 10d" | " 1m" | " 3m" | " 6m" | " 1y" | " 2y" | " 3y" | " 5y" | " 10y" | " 15y" | " 20y" | " 25y" | " ytd";
-	interval?: "DO" | " DN" | " WO" | " WN" | " MO" | " MN";
+	volume?: never /* possible values [boolean, 1|0 , '1'|'0', 'true'|'false'] 
+ please check docs of specific method for given property. 
+ please fix in barchart-ondemand-client-js as well! */;
+	period?: ("1d" | "5d" | "3d" | "10d" | "1m" | "3m" | "6m" | "1y" | "2y" | "3y" | "5y" | "10y" | "15y" | "20y" | "25y" | "ytd")[];
+	interval?: ("DO" | "DN" | "WO" | "WN" | "MO" | "MN")[];
 	indicators?: string | string[];
 	frequencyType?: string;
 }
@@ -1109,23 +1126,25 @@ export interface IOnDemandGetETFDetailsResponse extends IOnDemandResponse {
     }[];
 };
 export interface IOnDemandGetNewsOptions {
-    sources?: "AP" | " APAI" | " BC" | " BCNEWS" | " CP" | " CNW" | " CRB" | " CMTX" | " CMTX:PCS" | " CMTX:PCC" | " CMTX:SEC" | " IF" | " USDA" | " PRNW" | " ZACKS" | " BRUG" | " AGWEB" | " SETZ" | " SPC" | " NASS" | " ESTMZ" | " DVND" | " LME-WHS" | " DLFRX" | " GLDRPT" | " COT" | " MAX" | " CMDTY_AGLITE" | " CMDTY_AG" | " CMDTY_ENERGY" | " SYNDTGAM" | " FCTGAM" | " HDLNE" | " HDLNEG" | " HDLNEP";
+    sources?: string[];
 	symbols?: string | string[];
-	category?: "stocks" | " futures" | " forex";
-	subCategory?: "aero" | " ag" | " auto" | " business" | " construction" | " consprod" | " corporate" | " defense" | " energy" | " finance" | " indices" | " industry" | " leisure" | " media" | " retail" | " tech" | " transportation" | " util" | " softs" | " meats" | " metals" | " grains" | " financials" | " indices" | " energies" | " currencies" | " weather" | " fruits and vegetables";
-	series?: "MORNCALL";
+	category?: ("companies" | "politics" | "geography" | "commodities" | "economics" | "stocks" | "futures")[];
+	subCategory?: string[];
+	series?: string[];
 	keyword?: string;
 	maxRecords?: number;
 	startDate?: string;
-	displayType: "headline" | " preview" | " full";
-	images?: "true" | "false";
+	displayType: ("headline" | "preview" | "full")[];
+	images?: boolean;
 	storyId?: number;
-	rss?: "true" | "false";
+	rss?: boolean;
 	rssTitle?: string;
 	fields?: string | string[];
 	barchartClassification?: string | string[];
-	organization?: "Barchart" | " AgWeb" | " Brownfield Ag News" | " Scrap Monster" | " Dividend Channel" | " Successful Farming" | " Sunshine Profits" | " Sure Dividend" | " Taurus Trading LLC" | " DeCarley Trading" | " CFTC" | " Trade Precise" | " RJO Futures" | " Grainnet" | " Stock Picking" | " Options Trading for Income" | " Market Tea Leaves" | " Renewable Fuels Association" | " Elliott Wave Forecast" | " Total Farm Marketing" | " Levi Donohoe" | " Wavetraders" | " Walsh Trading" | " Tradable Patterns" | " Peter Knight" | " Swift Trading Company" | " ElliottWaveTrader.net" | " The Futures Management Group" | " The Smart Investor" | " Cannon Trading" | " GoldIRAGuide.com" | " Blue Line Futures" | " CFRN" | " Peter Mooses" | " TradeGuidance" | " NO BULL" | " Zacks" | " Brave NewCoin" | " HTS Commodities" | " The Tokenist" | " Monica Kingsley" | " My Trading IQ" | " Solvid" | " Hedder" | " Sidwell Strategies" | " MarketBeat" | " ElliottWave-Forecast" | " ONE44 Analytics" | " Monetive Wealth" | " Kolhanov.com" | " Banghart Properties" | " TradingView" | " SpreadEdge Capital" | " LLC" | " Astocks92" | " Hackett Financial Advisors" | " Inc." | " Baystreet" | " Heartland Investor Services Inc." | " Tanvir Zafar" | " The PRICE Futures Group" | " HedgeFundTips.com" | " Hashtag Investing" | " OptionMetrics" | " EW-Forecast.com" | " Best Weather Inc." | " CME Group" | " Coachman's Research" | " OTOS Inc." | " Young & The Invested" | " CommodityTrends" | " Archna Trades" | " Alpine Trading" | " Gold Predictors" | " AI-generated - The Globe and Mail" | " Agriculture.com" | " NewsBTC" | " Oil Market Journal" | " USDA Exports" | " USDA" | " AgFax" | " 24/7 Wall St." | " New York Post" | " Decrypt" | " BullionVault" | " OilPrice.com" | " mint" | " tastytrade" | " Real Estate News" | " Business Standard" | " Banking Dive" | " DailyFX" | " Financial Post" | " Bitcoin Magazine" | " Financial Express" | " CBS News" | " ETF Express" | " TipRanks" | " Benzinga" | " FX Street" | " Moneycontrol" | " CoinDesk" | " ETF Trends" | " Brave New Coin" | " Seeking Alpha" | " AP" | " PR Newswire" | " Canadian Press" | " AccessWire" | " GlobeNewswire" | " Business Wire" | " Canada Newswire" | " Food Dive" | " Beef Magazine" | " StockStory" | " Markets Insider" | " Sugar Online" | " Rigzone" | " The Street" | " Kitco" | " Cotton Outlook" | " CNBC" | " FreightWaves" | " Daily Coffee News" | " EIA" | " Packaging World" | " Plastics Today" | " Invezz" | " AllPennyStocks.com" | " The Globe and Mail" | " The Associated Press" | " NAWG" | " stocknews.com" | " Schaeffers Investment Research" | " Business Insider" | " Exame" | " TechCrunch" | " wallstreet online" | " France24.com" | " Bank of England" | " Investimentos e Noticias" | " Fox Business" | " The Guardian Nigeria" | " Canal Rural" | " El Economista" | " Shine News" | " Bloomberg" | " finews.ch" | " CEPEA" | " European Energy Commission" | " The Real Deal" | " Malay Mail" | " Economic Times (India)" | " MarketWatch" | " E&E News" | " El Comercio Ecuador" | " Renewable Energy World" | " US Federal Reserve" | " CNN" | " The Guardian" | " CNET" | " MSNBC" | " Journal of Commerce" | " Reuters" | " Hellenic Shipping News Worldwide" | " finanzen" | " El Comercio Peru" | " Bundesbank" | " ETF.com" | " Deutsche Welle" | " Blockworks" | " Barron's" | " Aljazeera" | " Quartz" | " Investor's Business Daily" | " FinanceFeeds" | " Connect CRE" | " Bisnow" | " Finextra" | " Supermarket News" | " stockmarket.com" | " PRWireCenter" | " Press Advantage" | " Barchart Reach" | " Alliance News" | " Newsfile" | " Barchart Impact" | " MarketersMEDIA Newswire" | " Financial Times" | " BBC" | " Meat & Poultry" | " Forbes" | " Bio Bio Chile" | " Handelsblatt" | " The Economist" | " Securities and Exchange Commission" | " Infobae" | " The Jerusalem Post" | " Undercurrent News" | " Risk.net" | " WirtschaftsWoche" | " Offshore Energy" | " Wired" | " Japan Times" | " E15" | " Upstream" | " S&P Global" | " The Moscow Times" | " American Banker" | " IntraFish" | " Energypost.eu" | " Engadget" | " Der Spiegel" | " Transport Topics" | " Wall Street Journal" | " Fortune" | " The Daily Reckoning";
-	lang?: "all" | " hi" | " de" | " ps" | " en-us" | " pt" | " zh-cn" | " yo" | " uk" | " cpe" | " id" | " ur" | " ig" | " aa" | " uz" | " mr" | " en" | " am" | " my" | " es" | " ar" | " vi" | " ne" | " ja" | " az" | " fa" | " en-gb" | " en-ca" | " ru" | " rw" | " fr" | " bn" | " br" | " si" | " es-ec" | " so" | " gd" | " om" | " sr" | " ko" | " sw" | " zh-tw" | " pt-br" | " ta" | " gu" | " ky" | " cs" | " te" | " pa" | " th" | " ti" | " cy" | " ha" | " tr";
+	organization?: string[];
+	lang?: string[];
+	sourceFeed?: string;
+	exactCategoryMatch?: boolean;
 }
 
 export interface IOnDemandGetNewsResponse extends IOnDemandResponse {
@@ -1157,7 +1176,7 @@ export interface IOnDemandGetNewsResponse extends IOnDemandResponse {
 };
 export interface IOnDemandGetSECFilingsOptions {
     symbols: string | string[];
-	filingType: "AllEx" | " All" | " 10k" | " 10q";
+	filingType: ("AllEx" | "All" | "10k" | "10q")[];
 	maxRecords?: number;
 	startDate?: string;
 }
@@ -1178,7 +1197,7 @@ export interface IOnDemandGetSECFilingsResponse extends IOnDemandResponse {
 };
 export interface IOnDemandGetInstrumentDefinitionOptions {
     symbols?: string | string[];
-	exchanges?: "FOREX" | " RATE" | " RATES" | " SECTOR" | " DGCX" | " DME" | " MATBA" | " ROFEX" | " ASX" | " SFE" | " BMF" | " BSE" | " CNSX" | " INDEX-TSX" | " MNTRL" | " TSX" | " TSX-V" | " WCE" | " CFFEX" | " CZCE" | " DCE" | " SHFE" | " EEX" | " EUIDX" | " EUREX" | " MEFF" | " MATIF" | " HKFE" | " MCX" | " NCDEX" | " NSE" | " ISE" | " JPX" | " TOCOM" | " KFE" | " MDEX" | " NZX" | " MOEX" | " OMX" | " ICESI" | " TFEX" | " TAIWA" | " ICE" | " LCE" | " LIFFE" | " LME" | " LSE" | " AMEX" | " BATS" | " CADFUNDS" | " CBOT" | " CBOTM" | " CFE" | " CME" | " COMEX" | " CRYPTO" | " CXMI" | " ERIS" | " FUND" | " GBLX" | " GREEN" | " ICEUS" | " INDEX" | " INDEX-CBOE" | " INDEX-DOW" | " INDEX-NQ" | " INDEX-NY" | " INDEX-RL" | " INDEX-SP" | " KCBT" | " MGEX" | " NASDAQ" | " NYMEX" | " NYMI" | " NYSE" | " OTC-BB" | " OTHER OTC" | " TRADAIR" | " SAFEX" | " SIMEX" | " C3" | " C3_BUNKER" | " PLATTS" | " CXE" | " BXE" | " DXE" | " EURNXT_EQ_BE" | " EURNXT_EQ_FR" | " EURNXT_EQ_NL" | " EURNXT_EQ_PT" | " ENDEX" | " EEX_POWER" | " OMX_POWER";
+	exchanges?: string[];
 	exchangeMics?: string | string[];
 	maxRecords?: number;
 	offset?: number;
@@ -1285,11 +1304,11 @@ export interface IOnDemandGetForexForwardCurvesResponse extends IOnDemandRespons
     }[];
 };
 export interface IOnDemandGetWeatherOptions {
-    weatherType?: "CC" | " F" | " MAP";
+    weatherType?: ("CC" | "F" | "MAP")[];
 	zipCode?: string;
 	fields?: string | string[];
-	mapType?: "localRadarAnimation" | " usRadarSatellite" | " usRadarSatelliteAnimation" | " todaysWeatherMap" | " currentWindConditions" | " todaysPrecipitationAccumulation" | " dailyPrecipitation" | " usSoilMoisture" | " usCurrentTemperatures";
-	mapRegion?: "centralPlains" | " dakotas" | " californiaArizona" | " colorado" | " deepSouth" | " delta" | " farWest" | " florida" | " greatBasin" | " greatLakes" | " midAtlantic" | " montana" | " northEast" | " ohioValley" | " pacificNorthwest" | " rockyMountains" | " southAtlantic" | " southPlains" | " southTexas" | " southWest";
+	mapType?: ("localRadarAnimation" | "usRadarSatellite" | "usRadarSatelliteAnimation" | "todaysWeatherMap" | "currentWindConditions" | "todaysPrecipitationAccumulation" | "dailyPrecipitation" | "usSoilMoisture" | "usCurrentTemperatures")[];
+	mapRegion?: ("centralPlains" | "dakotas" | "californiaArizona" | "colorado" | "deepSouth" | "delta" | "farWest" | "florida" | "greatBasin" | "greatLakes" | "midAtlantic" | "montana" | "northEast" | "ohioValley" | "pacificNorthwest" | "rockyMountains" | "southAtlantic" | "southPlains" | "southTexas" | "southWest")[];
 	mapWidth?: number;
 	mapHeight?: number;
 }
@@ -1334,7 +1353,7 @@ export interface IOnDemandGetWeatherResponse extends IOnDemandResponse {
     }[];
 };
 export interface IOnDemandGetGrainBidsOptions {
-    requestType?: "commodities" | " locations" | " bids";
+    requestType?: ("commodities" | "locations" | "bids")[];
 	location?: string | string[];
 	latitude?: number;
 	longitude?: number;
@@ -1344,7 +1363,9 @@ export interface IOnDemandGetGrainBidsOptions {
 	fipsCode?: number;
 	commodityName?: string | string[];
 	totalLocations?: number;
-	getAllBids?: "true" | "false";
+	getAllBids?: never /* possible values [boolean, 1|0 , '1'|'0', 'true'|'false'] 
+ please check docs of specific method for given property. 
+ please fix in barchart-ondemand-client-js as well! */;
 	bidsPerCom?: number;
 	numOfDecimals?: number;
 	fields?: string | string[];
@@ -1379,8 +1400,8 @@ export interface IOnDemandGetGrainBidsResponse extends IOnDemandResponse {
     }[];
 };
 export interface IOnDemandGetUSDAGrainPricesOptions {
-    commodityTypes?: "C" | " CCO" | " CSO" | " WDN" | " HRW" | " HRW11" | " O" | " HRWORD" | " SM" | " S" | " SRW" | " SWW";
-	bidTypes?: "E" | " P" | " R" | " T" | " B";
+    commodityTypes?: ("C" | "CCO" | "CSO" | "WDN" | "HRW" | "HRW11" | "O" | "HRWORD" | "SM" | "S" | "SRW" | "SWW")[];
+	bidTypes?: ("E" | "P" | "R" | "T" | "B")[];
 }
 
 export interface IOnDemandGetUSDAGrainPricesResponse extends IOnDemandResponse {
@@ -1420,7 +1441,7 @@ export interface IOnDemandGetCmdtyStatsOptions {
     symbol: string;
 	startDate?: string;
 	endDate?: string;
-	order?: "asc" | " desc";
+	order?: ("asc" | "desc")[];
 }
 
 export interface IOnDemandGetCmdtyStatsResponse extends IOnDemandResponse {
@@ -1449,12 +1470,12 @@ export interface IOnDemandGetCmdtyStatsResponse extends IOnDemandResponse {
 export interface IOnDemandGetCmdtyCalendarOptions {
     startDate: string;
 	endDate: string;
-	category?: "All" | " Ag" | " Energy" | " Econ" | " Freight" | " Metals" | " Rates";
+	category?: ("All" | "Ag" | "Energy" | "Econ" | "Freight" | "Metals" | "Rates")[];
 	country?: string | string[];
-	importance?: "1" | " 2" | " 3";
+	importance?: ("1" | "2" | "3")[];
 	symbol?: string | string[];
-	order?: "asc" | " desc";
-	fields?: "reference_ending" | " prior_reference_ending" | " status";
+	order?: ("asc" | "desc")[];
+	fields?: ("reference_ending" | "prior_reference_ending" | "status")[];
 }
 
 export interface IOnDemandGetCmdtyCalendarResponse extends IOnDemandResponse {

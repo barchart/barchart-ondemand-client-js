@@ -52,7 +52,7 @@ const supportedResources = new Set([
 
 
 
-function inputTypeMapper(input, resourceName, values) {
+function inputTypeMapper(input, resourceName, fieldName, values) {
     switch (true) {
         case input.startsWith("list (") && input.endsWith("string.)"): {
             return "string | string[]";
@@ -62,9 +62,20 @@ function inputTypeMapper(input, resourceName, values) {
         case input.startsWith("string ("): {
             return "string";
         }
-        case input.startsWith("list-enum ("):
+        case input.startsWith("list-enum ("): {
+            if (resourceName !== "GetUSDAGrainPrices" && resourceName !== "GetCmdtyCalendar") {
+                return "string[]";
+            }
+            // leek to "enum (" case
+        }
         case input.startsWith("enum ("): {
-            return values.split(",").map(x => `"${x}"`).join(" | ");
+            if (resourceName === "GetIndexMembers") {
+                return "string[]";
+            }
+            if (resourceName === "GetNews" && fieldName === "subCategory") {
+                return "string[]";
+            }
+            return "(" + values.split(",").map(x => `"${x.trim()}"`).join(" | ") + ")[]";
         }
         case input.startsWith("integer ("):
         case input.startsWith("double ("):
@@ -72,7 +83,13 @@ function inputTypeMapper(input, resourceName, values) {
             return "number";
         }
         case input.startsWith("boolean ("): {
-            return "\"true\" | \"false\"";
+            if (resourceName === "GetNews") {
+                return "boolean";
+            }
+            if (resourceName === "GetEquityOptions" && fieldName === "legacySymbols") {
+                return "1 | 0";
+            }
+            return "never /* possible values [boolean, 1|0 , '1'|'0', 'true'|'false'] \n please check docs of specific method for given property. \n please fix in barchart-ondemand-client-js as well! */"
         }
     }
 }
@@ -135,6 +152,9 @@ function outputTypeMapper(output, resourceName, fieldName) {
                 case "GetCmdtyStats.stats": {
                     return "{ date: string; value: string; }[]";
                 }
+                case "GetHistory.daysToExpiration":{
+                    return "number /* valid values are from 0-60 */";
+                }
             }
             return undefined;
         }
@@ -153,7 +173,7 @@ function generateInputTypes(doc, name) {
         const typeForType = el.querySelector("div .font-light").textContent;
         const typeForTypeValues = el.querySelector("div div.font-light:last-child").textContent;
 
-        const type = inputTypeMapper(typeForType, name, typeForTypeValues);
+        const type = inputTypeMapper(typeForType, name, typeName, typeForTypeValues);
         if (!type) {
             throw Error(`Missing type mapping for "${typeForType}" in '${name}' resource and '${typeName}' field`);
         }
