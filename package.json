@@ -25,7 +25,7 @@
   ],
   "scripts": {
     "build": "run-p build:** -l",
-    "build:browser": "esbuild src/ondemand-client.ts --outfile=dist/ondemand-client-browser.js --platform=browser --bundle --target=esnext --format=esm",
+    "build:browser": "esbuild src/ondemand-client.ts --outfile=dist/ondemand-client-browser.js --platform=browser --bundle --target=es2020 --format=esm",
     "build:node": "tsup --entry.ondemand-client-node src/ondemand-client.ts --format esm,cjs --platform=node --target=es2020",
     "build:types": "tsc --outDir dist",
     "generate": "node devtools/generate-interfaces-from-docs.js"
