@@ -300,6 +300,18 @@ var OnDemandClient = class {
     };
     return this._checkParamsAndFetch(requestData, options);
   }
+  getDividendData(options) {
+    let requestData = {
+      url: this.config.baseUrl + "/getDividendData." + this.format()
+    };
+    return this._checkParamsAndFetch(requestData, options);
+  }
+  getEquityOptionsExpirations(options) {
+    let requestData = {
+      url: this.config.baseUrl + "/getEquityOptionsExpirations." + this.format()
+    };
+    return this._checkParamsAndFetch(requestData, options);
+  }
   get(call, options) {
     let requestData = {
       url: this.config.baseUrl + "/" + call + "." + this.format()

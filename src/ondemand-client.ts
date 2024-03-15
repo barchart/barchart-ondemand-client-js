@@ -77,6 +77,10 @@ import type {
     IOnDemandGetCmdtyStatsResponse,
     IOnDemandGetGrainBidsOptions,
     IOnDemandGetGrainBidsResponse,
+    IOnDemandGetEquityOptionsExpirationsOptions,
+    IOnDemandGetEquityOptionsExpirationsResponse,
+    IOnDemandGetDividendDataOptions,
+    IOnDemandGetDividendDataResponse,
 } from "./interfaces";
 
 export interface IOnDemandClientConfig {
@@ -354,6 +358,20 @@ export class OnDemandClient {
             url: this.config.baseUrl + '/getClosePrice.' + this.format()
         };
         return this._checkParamsAndFetch<IOnDemandGetClosePriceResponse>(requestData, options);
+    };
+
+    getDividendData(options: IOnDemandGetDividendDataOptions) {
+        let requestData = {
+            url: this.config.baseUrl + '/getDividendData.' + this.format()
+        };
+        return this._checkParamsAndFetch<IOnDemandGetDividendDataResponse>(requestData, options);
+    };
+
+    getEquityOptionsExpirations(options: IOnDemandGetEquityOptionsExpirationsOptions) {
+        let requestData = {
+            url: this.config.baseUrl + '/getEquityOptionsExpirations.' + this.format()
+        };
+        return this._checkParamsAndFetch<IOnDemandGetEquityOptionsExpirationsResponse>(requestData, options);
     };
 
     get(call: "getEquityOptionsIntraday", options: IOnDemandGetEquityOptionsOptions): Promise<IOnDemandGetEquityOptionsResponse>;

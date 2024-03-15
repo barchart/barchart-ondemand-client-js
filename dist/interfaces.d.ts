@@ -248,7 +248,7 @@ export interface IOnDemandGetFuturesOptionsResponse extends IOnDemandResponse {
     }[];
 }
 export interface IOnDemandGetSpecialOptionsOptions {
-    root?: string;
+    root?: string | string[];
     contract?: string;
     type?: string;
     premiumRange?: string;
@@ -678,6 +678,24 @@ export interface IOnDemandGetEarningsEstimatesResponse extends IOnDemandResponse
         dividendRate?: number;
     }[];
 }
+export interface IOnDemandGetDividendDataOptions {
+    symbols: string | string[];
+}
+export interface IOnDemandGetDividendDataResponse extends IOnDemandResponse {
+    results: {
+        symbol: string;
+        announcementDate: string;
+        exDividendDate: string;
+        recordDate: string;
+        paymentDate: string;
+        dividend: number;
+        dividendYield: number;
+        dividendYieldPct: number;
+        frequency: number;
+        indicatedAnnualDividend: number;
+        dividendRateForward: number;
+    }[];
+}
 export interface IOnDemandGetLeadersOptions {
     exchanges?: string[];
     assetType: ("STK" | "ETF" | "FUND" | "FUT" | "FOREX");
@@ -759,6 +777,7 @@ export interface IOnDemandGetTechnicalsResponse extends IOnDemandResponse {
     results: {
         symbol: string;
         movingAverageFiveDay: number;
+        movingAverageTenDay: number;
         movingAverageTwentyDay: number;
         movingAverageFiftyDay: number;
         movingAverageOneHundredDay: number;
@@ -814,6 +833,7 @@ export interface IOnDemandGetTechnicalsResponse extends IOnDemandResponse {
         twentyDayATR?: number;
         fiftyDayATR?: number;
         oneHundredDayATR?: number;
+        fiveDayRelativeStrength?: number;
         nineDayRelativeStrength?: number;
         fourteenDayRelativeStrength?: number;
         twentyDayRelativeStrength?: number;
@@ -827,7 +847,9 @@ export interface IOnDemandGetTechnicalsResponse extends IOnDemandResponse {
         nineDayHistoricVolatility?: number;
         fourteenDayHistoricVolatility?: number;
         twentyDayHistoricVolatility?: number;
+        thirtyDayHistoricVolatility?: number;
         fiftyDayHistoricVolatility?: number;
+        ninetyDayHistoricVolatility?: number;
         oneHundredDayHistoricVolatility?: number;
         nineDayMACD?: number;
         fourteenDayMACD?: number;
@@ -1181,6 +1203,7 @@ export interface IOnDemandGetInstrumentDefinitionOptions {
     exchangeMics?: string | string[];
     maxRecords?: number;
     offset?: number;
+    returnExpired?: 1 | 0;
 }
 export interface IOnDemandGetInstrumentDefinitionResponse extends IOnDemandResponse {
     results: {
@@ -1535,5 +1558,22 @@ export interface IOnDemandGetCmdtyCalendarResponse extends IOnDemandResponse {
         refreshed: string;
         symbol: string;
         importance: number;
+    }[];
+}
+export interface IOnDemandGetEquityOptionsExpirationsOptions {
+    symbols?: string | string[];
+    exchange?: string;
+    sortDir?: ("ASC" | "DESC");
+    fields?: string | string[];
+}
+export interface IOnDemandGetEquityOptionsExpirationsResponse extends IOnDemandResponse {
+    results: {
+        symbol: string;
+        exchange: string;
+        expirationDates: string;
+        optionTypes?: {
+            monthly: string[];
+            weekly: string[];
+        };
     }[];
 }

@@ -40,6 +40,8 @@ const supportedResources = new Set([
     "getNews",
     "getBalanceSheets",
     "getClosePrice",
+    "getDividendData",
+    "getEquityOptionsExpirations",
     // used with get method ->
     "getEquityOptionsIntraday",
     "getCashFlow",
@@ -50,6 +52,11 @@ const supportedResources = new Set([
     "getGrainBids",
 ]);
 
+// Resources that are not listed in the main page
+// (probably also the ones used wih get method)
+const additionalResources = new Set([
+    "getEquityOptionsExpirations"
+]);
 
 
 function inputTypeMapper(input, resourceName, fieldName, values) {
@@ -92,6 +99,9 @@ function inputTypeMapper(input, resourceName, fieldName, values) {
                 return "boolean";
             }
             if (resourceName === "GetEquityOptions" && fieldName === "legacySymbols") {
+                return "1 | 0";
+            }
+            if (resourceName === "GetInstrumentDefinition" && fieldName === "returnExpired") {
                 return "1 | 0";
             }
             return "never /* possible values [boolean, 1|0 , '1'|'0', 'true'|'false'] \n please check docs of specific method for given property. \n please fix in barchart-ondemand-client-js as well! */"
@@ -159,6 +169,9 @@ function outputTypeMapper(output, resourceName, fieldName) {
                 }
                 case "GetHistory.daysToExpiration":{
                     return "number /* valid values are from 0-60 */";
+                }
+                case "GetEquityOptionsExpirations.optionTypes": {
+                    return "{ monthly: string[]; weekly: string[]; }";
                 }
             }
             return undefined;
@@ -243,6 +256,11 @@ export interface IOnDemand${name}Response extends IOnDemandResponse {
             const url = e.href;
             allEndpoints.push({ name: url.split("/").at(-1), url });
         }
+    }
+
+    for (const resource of additionalResources) {
+        const url = `https://www.barchart.com/ondemand/api/${resource}`;
+        allEndpoints.push({ name: resource, url });
     }
 
     // write types
