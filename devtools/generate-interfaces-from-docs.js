@@ -50,12 +50,13 @@ const supportedResources = new Set([
     "getForexForwardCurves",
     "getCmdtyStats",
     "getGrainBids",
+    "getEquityOptionsByDate",
 ]);
 
 // Resources that are not listed in the main page
 // (probably also the ones used wih get method)
 const additionalResources = new Set([
-    "getEquityOptionsExpirations"
+    "getEquityOptionsExpirations",
 ]);
 
 

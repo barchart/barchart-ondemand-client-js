@@ -82,6 +82,7 @@ import type {
     IOnDemandGetDividendDataOptions,
     IOnDemandGetDividendDataResponse,
 } from "./interfaces";
+import { IOnDemandGetEquityOptionsByDateOptions, IOnDemandGetEquityOptionsByDateResponse } from './interfaces.manual';
 
 export interface IOnDemandClientConfig {
     baseUrl: string;
@@ -381,6 +382,7 @@ export class OnDemandClient {
     get(call: "getForexForwardCurves", options: IOnDemandGetForexForwardCurvesOptions): Promise<IOnDemandGetForexForwardCurvesResponse>;
     get(call: "getCmdtyStats", options: IOnDemandGetCmdtyStatsOptions): Promise<IOnDemandGetCmdtyStatsResponse>;
     get(call: "getGrainBids", options: IOnDemandGetGrainBidsOptions): Promise<IOnDemandGetGrainBidsResponse>;
+    get(call: "getEquityOptionsByDate", options: IOnDemandGetEquityOptionsByDateOptions): Promise<IOnDemandGetEquityOptionsByDateResponse>;
     get<T = unknown>(call: string, options: unknown) {
         let requestData = {
             url: this.config.baseUrl + '/' + call + '.' + this.format()
