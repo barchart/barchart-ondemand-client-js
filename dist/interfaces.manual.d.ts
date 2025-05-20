@@ -79,3 +79,30 @@ export interface IOnDemandGetHistoricHighsLowsResponse extends IOnDemandResponse
         }>;
     }[];
 }
+export interface IOnDemandGetFuturesOptionsHistoryOptions {
+    token: string;
+    symbol: string;
+}
+export interface IOnDemandGetFuturesOptionsHistoryResponse extends IOnDemandResponse {
+    results: {
+        symbol: string;
+        root: string;
+        month: string;
+        year: string;
+        type: "C" | "P";
+        strike: number;
+        date: string;
+        open: number | null;
+        high: number | null;
+        low: number | null;
+        close: number | null;
+        volume: number | null;
+        openInterest: number | null;
+        delta: number | null;
+        gamma: number | null;
+        theta: number | null;
+        vega: number | null;
+        twentyDayVolatility: number | null;
+        impliedVolatility: number | null;
+    }[];
+}

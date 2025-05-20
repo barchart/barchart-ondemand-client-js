@@ -79,7 +79,7 @@ import type {
     IOnDemandGetDividendDataOptions,
     IOnDemandGetDividendDataResponse,
 } from "./interfaces";
-import { IOnDemandGetEquityOptionsByDateOptions, IOnDemandGetEquityOptionsByDateResponse, IOnDemandGetHistoricHighsLowsOptions, IOnDemandGetHistoricHighsLowsResponse } from './interfaces.manual';
+import { IOnDemandGetEquityOptionsByDateOptions, IOnDemandGetEquityOptionsByDateResponse, IOnDemandGetFuturesOptionsHistoryOptions, IOnDemandGetFuturesOptionsHistoryResponse, IOnDemandGetHistoricHighsLowsOptions, IOnDemandGetHistoricHighsLowsResponse } from './interfaces.manual';
 
 export interface IOnDemandClientConfig {
     baseUrl: string;
@@ -239,6 +239,14 @@ export class OnDemandClient {
         };
         return this._checkParamsAndFetch<IOnDemandGetFuturesOptionsResponse>(requestData, options);
     };
+
+
+    getFuturesOptionsHistory(options: IOnDemandGetFuturesOptionsHistoryOptions) {
+        let requestData = {
+            url: this.config.baseUrl + '/getFuturesOptionsHistory.' + this.format()
+        };
+        return this._checkParamsAndFetch<IOnDemandGetFuturesOptionsHistoryResponse>(requestData, options);
+    }
 
     getEquityOptions(options: IOnDemandGetEquityOptionsOptions) {
         let requestData = {

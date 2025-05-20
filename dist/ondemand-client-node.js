@@ -153,6 +153,12 @@ var OnDemandClient = class {
     };
     return this._checkParamsAndFetch(requestData, options);
   }
+  getFuturesOptionsHistory(options) {
+    let requestData = {
+      url: this.config.baseUrl + "/getFuturesOptionsHistory." + this.format()
+    };
+    return this._checkParamsAndFetch(requestData, options);
+  }
   getEquityOptions(options) {
     let requestData = {
       url: this.config.baseUrl + "/getEquityOptions." + this.format()
