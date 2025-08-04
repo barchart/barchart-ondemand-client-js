@@ -45,7 +45,7 @@ export interface IOnDemandGetEquityOptionsByDateResponse
     volume: number | null;
     openInterest: number | null;
     lastUpdateDate: string | null;
-  }[];
+  }[] | null;
 }
 
 export interface IOnDemandGetHistoricHighsLowsOptions {
@@ -84,7 +84,7 @@ export interface IOnDemandGetHistoricHighsLowsResponse
       madeNewHigh: number;
       period: string;
     }>;
-  }[];
+  }[] | null;
 }
 
 export interface IOnDemandGetFuturesOptionsHistoryOptions {
@@ -114,5 +114,5 @@ export interface IOnDemandGetFuturesOptionsHistoryResponse
     vega: number | null;
     twentyDayVolatility: number | null;
     impliedVolatility: number | null;
-  }[];
+  }[] | null;
 }
