@@ -116,7 +116,7 @@ export interface IOnDemandGetQuoteResponse extends IOnDemandResponse {
         previousBasis?: number;
         commodityDataDelivery?: string;
         commodityDataCurrency?: string;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetHistoryOptions {
     token: string;
@@ -152,7 +152,7 @@ export interface IOnDemandGetHistoryResponse extends IOnDemandResponse {
         close?: number;
         volume?: number;
         openInterest?: number;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetClosePriceOptions {
     token: string;
@@ -166,7 +166,7 @@ export interface IOnDemandGetClosePriceResponse extends IOnDemandResponse {
         symbol: string;
         closePrice: number;
         date: string;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetFuturesOptionsOptions {
     token: string;
@@ -213,8 +213,9 @@ export interface IOnDemandGetFuturesOptionsResponse extends IOnDemandResponse {
         openInterest?: number;
         settlement?: number;
         previousSettlement?: number;
+        previousSettlementDate?: string;
         extendedSymbol?: string;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetSpecialOptionsOptions {
     token: string;
@@ -239,6 +240,7 @@ export interface IOnDemandGetSpecialOptionsResponse extends IOnDemandResponse {
         strike: number;
         expirationDate: string;
         date: string;
+        tradeDate?: string;
         impliedVolatility?: number;
         delta?: number;
         gamma?: number;
@@ -258,7 +260,7 @@ export interface IOnDemandGetSpecialOptionsResponse extends IOnDemandResponse {
         volume?: number;
         openInterest?: number;
         flag?: string;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetEquityOptionsOptions {
     token: string;
@@ -310,7 +312,7 @@ export interface IOnDemandGetEquityOptionsResponse extends IOnDemandResponse {
         volume?: number;
         openInterest?: number;
         lastUpdateDate?: string;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetProfileOptions {
     token: string;
@@ -357,7 +359,7 @@ export interface IOnDemandGetProfileResponse extends IOnDemandResponse {
         compositeFigi: string;
         shareClassFigi: string;
         cik?: number;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetFinancialHighlightsOptions {
     token: string;
@@ -394,7 +396,7 @@ export interface IOnDemandGetFinancialHighlightsResponse extends IOnDemandRespon
         recentSplit?: string;
         beta?: number;
         weightAlpha: number;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetFinancialRatiosOptions {
     token: string;
@@ -415,7 +417,7 @@ export interface IOnDemandGetFinancialRatiosResponse extends IOnDemandResponse {
         interestCoverage?: number;
         bookValue?: number;
         dividendPayout?: number;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetIncomeStatementsOptions {
     token: string;
@@ -444,7 +446,7 @@ export interface IOnDemandGetIncomeStatementsResponse extends IOnDemandResponse 
         dilutedEpsBNRI: number;
         dilutedEpsTotalOp: number;
         ebitda: number;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetBalanceSheetsOptions {
     token: string;
@@ -488,13 +490,14 @@ export interface IOnDemandGetBalanceSheetsResponse extends IOnDemandResponse {
         otherEquity: number;
         totalShareholdersEquity: number;
         totalLiabilitiesAndEquity: number;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetCompetitorsOptions {
     token: string;
     symbol: string;
     fields?: string | string[];
     maxRecords?: number;
+    excludePriceAndVolumeFilter?: never;
 }
 export interface IOnDemandGetCompetitorsResponse extends IOnDemandResponse {
     results: {
@@ -506,7 +509,7 @@ export interface IOnDemandGetCompetitorsResponse extends IOnDemandResponse {
         fiftyTwoWkHighDate?: string;
         fiftyTwoWkLow?: number;
         fiftyTwoWkLowDate?: string;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetRatingsOptions {
     token: string;
@@ -553,7 +556,7 @@ export interface IOnDemandGetRatingsResponse extends IOnDemandResponse {
             two_months_ago: string;
             three_months_ago: string;
         };
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetIndexMembersOptions {
     token: string;
@@ -566,7 +569,7 @@ export interface IOnDemandGetIndexMembersResponse extends IOnDemandResponse {
         symbol: string;
         name: string;
         exchange?: string;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetCashFlowOptions {
     token: string;
@@ -613,7 +616,7 @@ export interface IOnDemandGetCashFlowResponse extends IOnDemandResponse {
         operatingCashFlow: number;
         capitalExpenditure: number;
         freeCashFlow: number;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetCorporateActionsOptions {
     token: string;
@@ -629,7 +632,7 @@ export interface IOnDemandGetCorporateActionsResponse extends IOnDemandResponse 
         eventDate: string;
         eventType: string;
         value: number;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetEarningsEstimatesOptions {
     token: string;
@@ -658,7 +661,7 @@ export interface IOnDemandGetEarningsEstimatesResponse extends IOnDemandResponse
         declarationDate?: string;
         exDividendDate?: string;
         dividendRate?: number;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetDividendDataOptions {
     token: string;
@@ -677,7 +680,7 @@ export interface IOnDemandGetDividendDataResponse extends IOnDemandResponse {
         frequency: number;
         indicatedAnnualDividend: number;
         dividendRateForward: number;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetLeadersOptions {
     token: string;
@@ -687,6 +690,7 @@ export interface IOnDemandGetLeadersOptions {
     maxRecords?: number;
     period?: ("5d" | "20d" | "65d" | "100d" | "260d");
     sortDirection?: ("ASC" | "DESC");
+    excludeEtfsFromStocks?: never;
 }
 export interface IOnDemandGetLeadersResponse extends IOnDemandResponse {
     results: {
@@ -706,7 +710,7 @@ export interface IOnDemandGetLeadersResponse extends IOnDemandResponse {
         volume: number;
         previousVolume: number;
         standardDeviation: number;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetHighsLowsOptions {
     token: string;
@@ -735,7 +739,7 @@ export interface IOnDemandGetHighsLowsResponse extends IOnDemandResponse {
         selectedPeriodHighPercent: number;
         selectedPeriodLowPrice: number;
         selectedPeriodLowPercent: number;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetChartOptions {
     token: string;
@@ -748,12 +752,15 @@ export interface IOnDemandGetChartOptions {
     interval?: ("DO" | "DN" | "WO" | "WN" | "MO" | "MN");
     indicators?: string | string[];
     frequencyType?: string;
+    gradientTop?: string;
+    gradientBottom?: string;
+    bgColor?: string;
 }
 export interface IOnDemandGetChartResponse extends IOnDemandResponse {
     results: {
         symbol: string;
         imageURL: string;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetTechnicalsOptions {
     token: string;
@@ -767,9 +774,15 @@ export interface IOnDemandGetTechnicalsResponse extends IOnDemandResponse {
         movingAverageTenDay: number;
         movingAverageTwentyDay: number;
         movingAverageFiftyDay: number;
-        movingAverageOneHundredDay: number;
-        movingAverageTwoHundredDay: number;
-        movingAverageYTD: number;
+        movingAverageOneHundredDay?: number;
+        movingAverageOneHundredFiftyDay?: number;
+        movingAverageTwoHundredDay?: number;
+        movingAverageOneMonth?: number;
+        movingAverageThreeMonths?: number;
+        movingAverageSixMonths?: number;
+        movingAverageNineMonths?: number;
+        movingAverageFiftyTwoWeeks?: number;
+        movingAverageYTD?: number;
         priceChangeFiveDay?: number;
         priceChangeTwentyDay?: number;
         priceChangeFiftyDay?: number;
@@ -820,6 +833,7 @@ export interface IOnDemandGetTechnicalsResponse extends IOnDemandResponse {
         twentyDayATR?: number;
         fiftyDayATR?: number;
         oneHundredDayATR?: number;
+        twoDayRelativeStrength?: number;
         fiveDayRelativeStrength?: number;
         nineDayRelativeStrength?: number;
         fourteenDayRelativeStrength?: number;
@@ -870,7 +884,114 @@ export interface IOnDemandGetTechnicalsResponse extends IOnDemandResponse {
         gapDown?: number;
         gapDownPercent?: number;
         percentVolume?: number;
-    }[];
+        relativeStrengthTwoDay?: number;
+        relativeStrengthFiveDay?: number;
+        relativeStrengthNineDay?: number;
+        relativeStrengthFourteenDay?: number;
+        relativeStrengthTwentyDay?: number;
+        relativeStrengthFiftyDay?: number;
+        relativeStrengthOneHundredDay?: number;
+        averageDailyRangeNineDay?: number;
+        averageDailyRangeFourteenDay?: number;
+        averageDailyRangeTwentyDay?: number;
+        averageDailyRangeFiftyDay?: number;
+        averageDailyRangeOneHundredDay?: number;
+        averageDailyRangePercentNineDay?: number;
+        averageDailyRangePercentFourteenDay?: number;
+        averageDailyRangePercentTwentyDay?: number;
+        averageDailyRangePercentFiftyDay?: number;
+        averageDailyRangePercentOneHundredDay?: number;
+        averageTrueRangeNineDay?: number;
+        averageTrueRangeFourteenDay?: number;
+        averageTrueRangeTwentyDay?: number;
+        averageTrueRangeFiftyDay?: number;
+        averageTrueRangeOneHundredDay?: number;
+        averageTrueRangePercentNineDay?: number;
+        averageTrueRangePercentFourteenDay?: number;
+        averageTrueRangePercentTwentyDay?: number;
+        averageTrueRangePercentFiftyDay?: number;
+        averageTrueRangePercentOneHundredDay?: number;
+        slopeMovingAverageFiveDay?: number;
+        slopeMovingAverageTenDay?: number;
+        slopeMovingAverageTwentyDay?: number;
+        slopeMovingAverageFiftyDay?: number;
+        slopeMovingAverageOneHundredDay?: number;
+        slopeMovingAverageOneHundredFiftyDay?: number;
+        slopeMovingAverageTwoHundredDay?: number;
+        slopeMovingAverageYTD?: number;
+        slopeMovingAverageOneMonth?: number;
+        slopeMovingAverageThreeMonths?: number;
+        slopeMovingAverageSixMonths?: number;
+        slopeMovingAverageNineMonths?: number;
+        slopeMovingAverageOneYear?: number;
+        slopeMovingAverageTwoYears?: number;
+        slopeExponentialMovingAverageFiveDay?: number;
+        slopeExponentialMovingAverageTenDay?: number;
+        slopeExponentialMovingAverageTwentyDay?: number;
+        slopeExponentialMovingAverageFiftyDay?: number;
+        slopeExponentialMovingAverageOneHundredDay?: number;
+        slopeExponentialMovingAverageOneHundredFiftyDay?: number;
+        slopeExponentialMovingAverageTwoHundredDay?: number;
+        slopeExponentialMovingAverageYTD?: number;
+        slopeExponentialMovingAverageOneMonth?: number;
+        slopeExponentialMovingAverageThreeMonths?: number;
+        slopeExponentialMovingAverageSixMonths?: number;
+        slopeExponentialMovingAverageNineMonths?: number;
+        slopeExponentialMovingAverageOneYear?: number;
+        slopeExponentialMovingAverageTwoYears?: number;
+        percentFromMovingAverageFiveDay?: number;
+        percentFromMovingAverageTenDay?: number;
+        percentFromMovingAverageTwentyDay?: number;
+        percentFromMovingAverageFiftyDay?: number;
+        percentFromMovingAverageOneHundredDay?: number;
+        percentFromMovingAverageOneHundredFiftyDay?: number;
+        percentFromMovingAverageTwoHundredDay?: number;
+        percentFromMovingAverageYTD?: number;
+        percentFromMovingAverageOneMonth?: number;
+        percentFromMovingAverageThreeMonths?: number;
+        percentFromMovingAverageSixMonths?: number;
+        percentFromMovingAverageNineMonths?: number;
+        percentFromMovingAverageOneYear?: number;
+        percentFromMovingAverageTwoYears?: number;
+        exponentialMovingAverageFiveDay?: number;
+        exponentialMovingAverageTenDay?: number;
+        exponentialMovingAverageTwentyDay?: number;
+        exponentialMovingAverageFiftyDay?: number;
+        exponentialMovingAverageOneHundredDay?: number;
+        exponentialMovingAverageOneHundredFiftyDay?: number;
+        exponentialMovingAverageTwoHundredDay?: number;
+        exponentialMovingAverageYTD?: number;
+        exponentialMovingAverageOneMonth?: number;
+        exponentialMovingAverageThreeMonths?: number;
+        exponentialMovingAverageSixMonths?: number;
+        exponentialMovingAverageNineMonths?: number;
+        exponentialMovingAverageOneYear?: number;
+        exponentialMovingAverageTwoYears?: number;
+        relativeVolumeFiveDay?: number;
+        relativeVolumeTenDay?: number;
+        relativeVolumeTwentyDay?: number;
+        relativeVolumeFiftyDay?: number;
+        relativeVolumeOneHundredDay?: number;
+        relativeVolumeOneHundredFiftyDay?: number;
+        relativeVolumeTwoHundredDay?: number;
+        relativeVolumeYTD?: number;
+        relativeVolumeOneMonth?: number;
+        relativeVolumeThreeMonths?: number;
+        relativeVolumeSixMonths?: number;
+        relativeVolumeNineMonths?: number;
+        relativeVolumeOneYear?: number;
+        relativeVolumeTwoYears?: number;
+        bollingerBandPercentTwentyDay?: number;
+        bollingerBandRankTwentyDay?: number;
+        keltnerBandPercentTwentyDay?: number;
+        keltnerBandRankTwentyDay?: number;
+        closeLowRange?: number;
+        range?: number;
+        rangeHighLowPercent?: number;
+        rangeOpenClosePercent?: number;
+        highLowDifference?: number;
+        relativeStrengthIndexRank?: number;
+    }[] | null;
 }
 export interface IOnDemandGetSignalOptions {
     token: string;
@@ -982,7 +1103,7 @@ export interface IOnDemandGetSignalResponse extends IOnDemandResponse {
         macd12_26_9DayDirection?: string;
         macd12_26_9DaySignal?: string;
         macd12_26_9DayNewSignal?: string;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetMomentumOptions {
     token: string;
@@ -1036,7 +1157,7 @@ export interface IOnDemandGetMomentumResponse extends IOnDemandResponse {
         unchangedShares?: number;
         newHighs?: number;
         newLows?: number;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetETFDetailsOptions {
     token: string;
@@ -1117,7 +1238,7 @@ export interface IOnDemandGetETFDetailsResponse extends IOnDemandResponse {
         topHoldings10: string;
         topHoldings10Name: string;
         topHoldings10Percent: number;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetNewsOptions {
     token: string;
@@ -1166,7 +1287,7 @@ export interface IOnDemandGetNewsResponse extends IOnDemandResponse {
         canonicalUrl: string;
         relatedSymbols: string[];
         sourceFeed?: string;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetSECFilingsOptions {
     token: string;
@@ -1187,7 +1308,7 @@ export interface IOnDemandGetSECFilingsResponse extends IOnDemandResponse {
         htmlURL: string;
         wordURL: string;
         excelURL: string;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetInstrumentDefinitionOptions {
     token: string;
@@ -1216,7 +1337,7 @@ export interface IOnDemandGetInstrumentDefinitionResponse extends IOnDemandRespo
         baseCode: string;
         unitCode: number;
         pointValue: number;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetFuturesSpecificationsOptions {
     token: string;
@@ -1240,7 +1361,7 @@ export interface IOnDemandGetFuturesSpecificationsResponse extends IOnDemandResp
         exchangeMargin: string;
         exchangeSymbol: string;
         dailyLimit: string;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetFuturesExpirationsOptions {
     token: string;
@@ -1256,7 +1377,7 @@ export interface IOnDemandGetFuturesExpirationsResponse extends IOnDemandRespons
         firstNoticeDate: string;
         expirationDate: string;
         lastTradingDay?: string;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetFuturesOptionsExpirationsOptions {
     token: string;
@@ -1270,7 +1391,7 @@ export interface IOnDemandGetFuturesOptionsExpirationsResponse extends IOnDemand
         exchange: string;
         underlyingContract: string;
         expirationDate: string;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetSpecialOptionsClassificationOptions {
     token: string;
@@ -1296,7 +1417,7 @@ export interface IOnDemandGetSpecialOptionsClassificationResponse extends IOnDem
                 };
             }[];
         }))[];
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetForexForwardCurvesOptions {
     token: string;
@@ -1323,7 +1444,7 @@ export interface IOnDemandGetForexForwardCurvesResponse extends IOnDemandRespons
             previous: number;
             lastUpdate: string;
         }[];
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetWeatherOptions {
     token: string;
@@ -1372,7 +1493,7 @@ export interface IOnDemandGetWeatherResponse extends IOnDemandResponse {
         mapRegion: string;
         mapType: string;
         mapUrl: string;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetGrainBidsOptions {
     token: string;
@@ -1458,7 +1579,7 @@ export interface IOnDemandGetGrainBidsResponse extends IOnDemandResponse {
         basisTimestamp: string;
         commodities?: null | any;
         basisTimestampRaw: number;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetUSDAGrainPricesOptions {
     token: string;
@@ -1496,7 +1617,7 @@ export interface IOnDemandGetUSDAGrainPricesResponse extends IOnDemandResponse {
         priceChange: number;
         basis: string;
         bidChange: number;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetCmdtyStatsOptions {
     token: string;
@@ -1529,7 +1650,7 @@ export interface IOnDemandGetCmdtyStatsResponse extends IOnDemandResponse {
             date: string;
             value: string;
         }[];
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetCmdtyCalendarOptions {
     token: string;
@@ -1561,7 +1682,7 @@ export interface IOnDemandGetCmdtyCalendarResponse extends IOnDemandResponse {
         refreshed: string;
         symbol: string;
         importance: number;
-    }[];
+    }[] | null;
 }
 export interface IOnDemandGetEquityOptionsExpirationsOptions {
     token: string;
@@ -1579,5 +1700,5 @@ export interface IOnDemandGetEquityOptionsExpirationsResponse extends IOnDemandR
             monthly: string[];
             weekly: string[];
         };
-    }[];
+    }[] | null;
 }

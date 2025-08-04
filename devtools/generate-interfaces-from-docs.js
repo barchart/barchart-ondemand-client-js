@@ -203,7 +203,7 @@ function generateInputTypes(doc, name) {
     return `
 export interface IOnDemand${name}Options {
     token: string;
-    ${inputTs.join("\n\t")}
+    ${inputTs.join("\n    ")}
 }`;
 
 }
@@ -232,8 +232,8 @@ function generateOutputTypes(doc, name) {
     return `
 export interface IOnDemand${name}Response extends IOnDemandResponse {
     results: {
-        ${outputTs.join("\n\t\t")}
-    }${isArrayResponse ? '[]' : ''};
+        ${outputTs.join("\n        ")}
+    }${isArrayResponse ? '[]' : ''} | null;
 };`;
 
 }
@@ -251,8 +251,8 @@ export interface IOnDemand${name}Response extends IOnDemandResponse {
     const docsLinkHolders = docsListDOM.window.document.querySelectorAll("body div.main-wrap-content .content-container-padding > .w-full");
 
     let allEndpoints = [];
-    // skip first element, its not element we are looking for
-    for (let i = 1; i < docsLinkHolders.length; i++) {
+    // skip first two elements (categories and tools, not API endpoints)
+    for (let i = 2; i < docsLinkHolders.length; i++) {
         const endpointElements = docsLinkHolders[i].querySelectorAll("div > div.flex > div:first-child a");
         for (const e of endpointElements) {
             const url = e.href;
